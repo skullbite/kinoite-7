@@ -252,8 +252,8 @@ chmod +x ./install.sh
 ./compile.sh
 ./install.sh -s -q
 
-plymouth-set-default-theme PlymouthVista
-cat /usr/share/plymouth/plymouthd.defaults | sed "s/Theme=bgrt/Theme=PlymouthVista/g"
+sed -i "s/Theme=bgrt/Theme=PlymouthVista/g" /usr/share/plymouth/plymouthd.defaults
+
 
 # dnf5 -y copr enable ublue-os/staging
 # dnf5 -y install package

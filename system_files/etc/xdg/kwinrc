@@ -1,0 +1,12 @@
+[Effect-aeroglassblur]
+AccentColorName=16
+AeroBrightness=98
+AeroIntensity=84
+AeroSaturation=0
+BasicColorization=true
+BlurDocks=true
+PaintAsTranslucent=true
+
+[Plugins]
+aeroglassblurEnabled=true
+smodglowEnabled=true
