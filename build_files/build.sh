@@ -239,11 +239,8 @@ done
 
 update-mime-database /usr/share/mime
 
-for i in "$CUR/misc/branding/"*; do
-    cp -r "$i" /etc/kdedefaults
-done
-
-kwriteconfig6 --file /etc/kcm-about-distrorc --group General --key LogoPath /etc/kdedefaults/kcminfo.png
+cp $CUR/misc/branding/kcminfo.png /usr/share/fed7/logo.png
+kwriteconfig6 --file /etc/xdg kcm-about-distrorc --group General --key LogoPath /etc/kdedefaults/kcminfo.png
 
 git clone https://github.com/furkrn/PlymouthVista
 cd PlymouthVista
@@ -254,6 +251,7 @@ chmod +x ./install.sh
 
 sed -i "s/Theme=bgrt/Theme=PlymouthVista/g" /usr/share/plymouth/plymouthd.defaults
 
+rm /usr/share/wayland-sessions/plasma.desktop
 
 # dnf5 -y copr enable ublue-os/staging
 # dnf5 -y install package
