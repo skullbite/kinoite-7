@@ -4,7 +4,7 @@ COPY build_files /
 COPY system_files /sys
 
 # Base Image
-FROM ghcr.io/ublue-os/aurora:latest
+FROM ghcr.io/ublue-os/kinoite-main:latest
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
