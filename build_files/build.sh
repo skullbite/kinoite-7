@@ -255,6 +255,7 @@ git clone https://github.com/furkrn/PlymouthVista /tmp/PlymouthVista
 CUR=/tmp/PlymouthVista
 cd $CUR
 sh compile.sh
+ dracut --force --omit plymouth --regenerate-all --verbose
 chmod +x PlymouthVista.script
 
 cp $CUR/lucon_disable_anti_aliasing.conf /etc/fonts/conf.d/10-lucon_disable_anti_aliasing.conf
@@ -282,8 +283,7 @@ cp -r $(pwd) /usr/share/plymouth/themes/PlymouthVista
 # chmod +x ./install.sh
 # ./compile.sh
 # ./install.sh -s -q
-plymouth-set-default-theme PlymouthVista
-dracut --force --regenerate-all --verbose
+plymouth-set-default-theme -R PlymouthVista
 rm /usr/share/wayland-sessions/plasma.desktop
 
 systemctl enable podman.socket
