@@ -1,5 +1,5 @@
 [General]
-LogoPath=/usr/share/fed7/icon.png
-Website=https://github.com/skullbite/image-template
-Name=Fed7
+LogoPath=/usr/share/k7/logo.png
+Website=https://github.com/skullbite/kde-7
+Name=Kinoite 7
 Variant=AeroThemePlasma by WackyIdeas

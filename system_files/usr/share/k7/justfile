@@ -1,10 +1,7 @@
-test:
-   echo "hi :)"
-
 set-bash-profile $option="windows":
    #!/bin/bash
-   link_path=$HOME/.bashrc.d/fed7-profile
-   target_path=/usr/share/fed7/bash-profiles/$option
+   link_path=$HOME/.bashrc.d/k7-profile
+   target_path=/usr/share/k7/bash-profiles/$option
    if [[ $option == "off" ]]; then
        rm $link_path
        exit
@@ -15,8 +12,8 @@ set-bash-profile $option="windows":
    fi
 
    if [[ ! -f $target_path ]]; then
-       echo "{{ RED }}$option is not valid {{ NORMAL }}"
-       echo "$(ls /usr/share/fed7/bash-profiles) off"
+       echo "{{ RED }}'$option' is not valid {{ NORMAL }}"
+       echo "$(ls /usr/share/k7/bash-profiles) off"
        exit 1
    fi
 
@@ -25,13 +22,14 @@ set-bash-profile $option="windows":
    fi
 
    ln -s $target_path $link_path
-   echo "{{GREEN}}Bash profile set."
+   echo "{{GREEN}}Bash profile set to '$option'."
 
 _write-kvantum-config:
     #!/bin/bash
-    kv_path=$HOME/.config/Kvantum/kvantum.kvconfig
+    kv_path=~/.config/Kvantum/kvantum.kvconfig
+    mkdir -p ~/.config/Kvantum
     if [[ ! -f $kv_path ]]; then
-        echo -e "[General]\ntheme=Windows7Aero" > kv_path
+        echo -e "[General]\ntheme=Windows7Aero" > $kv_path
     else
         echo "File already exists"
     fi

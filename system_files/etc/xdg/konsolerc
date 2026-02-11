@@ -1,5 +1,8 @@
 MenuBar=Disabled
 
+[Desktop Entry]
+DefaultProfile=K7.profile
+
 [General]
 ConfigVersion=1
 
