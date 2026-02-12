@@ -1,17 +1,53 @@
-set-bash-profile $option="windows":
+set-bash-profile $option="choose":
    #!/bin/bash
-   OPTIONS=("cmdprompt ublue fastfetch")
-   if [[ $(echo $OPTIONS | sed "s/$/g") == $OPTIONS ]]
-
-cmd-prompt-konsole:
-   #!/bin/bash
-   konsole_path=~/.local/share/konsole
-   mkdir -p $konsole_path
-   if [[ ! -f $konsole_path ]]; then
-       ln -s /usr/share/kin7/config/konsole.profile $konsole_path/Kinoite7.profile
+   OPTIONS=("cmdprompt ublue fastfetch off")
+   if [[ $option == "choose" ]]; then
+       echo
+       echo -e "cmdprompt = Win7 command prompt.\nublue = Ublue's Message of the Day prompt\nfastfetch = Fastfetch\noff = No prompt"
+       option=$(gum choose $OPTIONS)
    fi
 
+   if [[ $(echo $OPTIONS | sed "s/$option//g") == $OPTIONS ]]; then
+       echo "Invalid option '$option':"
+       echo $OPTIONS
+       exit 1
+   fi
+
+   case $option in
+       cmdprompt)
+           gum confirm "Would you like to enable command prompt PS1? ( ex. C:\var\home\\${USER}> )" && \
+           7just _set-config win-7-prompt 1 && \
+           echo "{{GREEN+BOLD}}Command Prompt PS1 enabled.{{NORMAL}}"
+       ;;
+   esac
+
+   7just _set-config bash-profile $option
+   echo "{{GREEN+BOLD}}Bash profile set to '$option'. Open a new terminal to see the changes.{{NORMAL}}"
+
+toggle-win7-ps1:
+    #!/bin/bash
+    if [[ $(7just _get-config win-7-prompt) == "1" ]]; then
+        7just _set-config win-7-prompt 0
+    else
+        7just _set-config win-7-prompt 1
+    fi
+
+
+set-cmd-prompt-konsole-theme:
+   #!/bin/bash
+   konsole_path=~/.local/share/konsole/
+
+   gum confirm "{{YELLOW+BOLD}}This will overwrite your konsole config. Would you like to continue?{{NORMAL}}"
+   mkdir -p $konsole_path
+   if [[ ! -f $konsole_path/Kinoite7.profile ]]; then
+       echo "{{BOLD}}Wrting Kinoite7 konsole profile{{NORMAL}}"
+       ln -s /usr/share/kin7/config/konsole.profile $konsole_path/Kinoite7.profile
+   fi
+   
+   echo "{{BOLD}}Writing konsole config{{NORMAL}}"
    cat /usr/share/kin7/config/konsolerc > ~/.config/konsolerc
+
+   echo "{{GREEN+BOLD}}Done. Open konsole again to see changes.{{NORMAL}}"
 
 _write-kvantum-config:
     #!/bin/bash
