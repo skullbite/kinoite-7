@@ -1,39 +1,86 @@
 #!/bin/bash
 
-set -ouex pipefail
+# This fully comes from WinBlues7, I could not figure it out myself
+set -exuo pipefail
 
-dnf install -y plymouth plymouth-scripts plymouth-plugin-script ImageMagick
+dnf install -y plymouth-plugin-script
 
-git clone https://github.com/furkrn/PlymouthVista /tmp/PlymouthVista
-CUR=/tmp/PlymouthVista
-cd $CUR
-sh compile.sh
-chmod +x PlymouthVista.script
-# sh pv_conf.sh -s AuthuiStyle -v 7 -i PlymouthVista.script
+COMMIT=dadc995c6e7d68d1e28b6429e0e2eacb2ce1cc41
+URL=https://github.com/furkrn/PlymouthVista/archive/${COMMIT}.zip
 
-sh pv_conf.sh
-cp $CUR/lucon_disable_anti_aliasing.conf /etc/fonts/conf.d/10-lucon_disable_anti_aliasing.conf
-sh gen_blur.sh
-cp $CUR/systemd/system/update-plymouth-vista-state-boot.service /etc/systemd/system
-cp $CUR/systemd/system/update-plymouth-vista-state-quit.service /etc/systemd/system
-cp $CUR/systemd/hibernation/plymouth-vista-hibernate.service /etc/systemd/system
-cp $CUR/systemd/hibernation/plymouth-vista-resume-from-hibernation.service /etc/systemd/system
-cp $CUR/systemd/user/update-plymouth-vista-state-logon.service /etc/systemd/user
-# TODO: Bound this variable to a config value, either thru 7just or system settings
-sed "s/\$\(.*\)\"/10\"/g" -i systemd/slowdown/plymouth-vista-slow-boot-animation.service
-cat systemd/slowdown/plymouth-vista-slow-boot-animation.service
-cp systemd/slowdown/plymouth-vista-slow-boot-animation.service /etc/systemd/system
-systemctl enable update-plymouth-vista-state-{boot,quit}.service
-systemctl enable plymouth-vista-{hibernate,resume-from-hibernation}.service
-systemctl enable plymouth-vista-slow-boot-animation.service
+cd /tmp
+curl -L -o plymouth-vista.zip $URL
+unzip plymouth-vista.zip
+cd PlymouthVista-${COMMIT}
+
+bash ./compile.sh
+
+bash ./gen_blur.sh
+
+    # I won't bother with a proper better way, this just works :\
+    sed -i '/# START_WIN7_CONFIG/,/# END_WIN7_CONFIG/{ 
+    /# START_WIN7_CONFIG/!{ 
+        /# END_WIN7_CONFIG/!d 
+    } 
+    r /dev/stdin
+}' PlymouthVista.script <<EOF
+// Use Vista boot which is available even on Windows 11.
+// 1 - Use Vista boot screen
+// 0 - Use 7 boot screen
+global.UseLegacyBootScreen = 0;
+
+// Add shadow effect to shutdown screen text.
+// 0 - Windows Vista style, no text shadow.
+// 1 - Windows 7 style, show text shadow. 
+global.UseShadow = 1;
+
+// Change the background of the shutdown screen.
+// vista - Use Vista background and branding.
+// 7 - Use 7 background and branding.
+global.AuthuiStyle = "7";
+EOF
+
+
+# "Do you want fade in effects in shutdown?"
+# "1 - Automatic (Fade when shutdown is called from your desktop, don't fade when shutdown is called from SDDM)"
+# "2 - Always (Fade when shutdown is called from your desktop, fade when shutdown is called from SDDM)"
+# "3 - Never (Don't fade when shutdown is called from your desktop, don't fade when shutdown is called from SDDM)"
+INPUT=2
+
+if [[ $INPUT != 1 ]] && [[ $INPUT != 2 ]] then
+    $INPUT = 0;
+fi
+
+sed -i '/# START_USED_BY_INSTALL_SCRIPT_PREF/,/# END_USED_BY_INSTALL_SCRIPT_PREF/{ 
+    /# START_USED_BY_INSTALL_SCRIPT_PREF/!{ 
+        /# END_USED_BY_INSTALL_SCRIPT_PREF/!d 
+    } 
+    r /dev/stdin
+}' PlymouthVista.script <<EOF
+global.Pref = $INPUT;
+EOF
+
+cp ./lucon_disable_anti_aliasing.conf /etc/fonts/conf.d/10-lucon_disable_anti_aliasing.conf
+
+rm -rf /usr/share/plymouth/themes/PlymouthVista
 
 cp -r $(pwd) /usr/share/plymouth/themes/PlymouthVista
-#chmod +x ./compile.sh
-#chmod +x ./install.sh
-#./compile.sh
-#./install.sh -s -q
-# sh omitPlymouth.sh
-plymouth-set-default-theme PlymouthVista
-dracut --force --regenerate-all --verbose
+ls -la /usr/share/plymouth/themes/PlymouthVista
 
-rm /usr/share/wayland-sessions/plasma.desktop
+if [[ $INPUT = 1 ]] then
+    echo "Creating automatic services"
+    chmod -R 777 /usr/share/plymouth/themes/PlymouthVista/
+
+    cp $(pwd)/systemd/system/* /etc/systemd/system
+    for f in $(pwd)/systemd/system/*.service; do
+        systemctl enable $(basename $f)
+    done
+
+    cp $(pwd)/systemd/user/* /etc/systemd/user
+        for f in $(pwd)/systemd/user/*.service; do
+        systemctl --user -M $SUDO_USER@ enable update-plymouth-vista-state-logon.service
+    done
+
+fi
+
+plymouth-set-default-theme PlymouthVista
