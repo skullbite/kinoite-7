@@ -1,10 +1,10 @@
 > [!NOTE]  
-> **This project is NOT affiliated with Microsoft or Windows, We do not claim ownership to any of the assets included.**
-# 🪟 Kinoite 7 (aka: Kin7)
+> **This project is NOT affiliated with Microsoft or Windows; We do not claim ownership to any of the assets included.**
+# 🪟🐧 Kinoite 7 (or Kin7)
 
-An OCI image that layers [AeroThemePlasma](https://gitgud.io/wackyideas/aerothemeplasma/) on top of KDE Plasma, ain't it purdy?
-
+### An OCI image that layers [AeroThemePlasma](https://gitgud.io/wackyideas/aerothemeplasma/) on top of Fedora Kinoite
 ![Kinoite 7 Preview](https://github.com/skullbite/kinoite-7/blob/main/repo_files/Preview.png?raw=true)
+
 ## Features
 - Steam + Tailscale preinstalled
 - Almost* everything offered by ATP
@@ -36,8 +36,10 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 - System default wallpaper is Plasmas
 
 ## "How is this different from WinBlues 7?"
+> TL;DR: This image is based on Kinoite rather than Bazzite, and attempts to incorporate more ATP associated projects.
+
 [WinBlues 7](https://github.com/winblues/winblues7) is another image built by [ledif](https://github.com/ledif) that installs ATP on top of Bazzite KDE Plasma. At the time of writing, the included taskbar component (SevenTasks) is broken.
 
 This image is built on top of [UBlue's kinoite image](https://github.com/ublue-os/main), which only includes the (GUI) apps that come by default in KDE Plasma under Fedora Atomic. (aside from Steam)
 
-Aside from that, the intent of Kinioite 7 is to look *as* "7-ish" as possible.
+Aside from that, the intent of Kinioite 7 is to include as many projects associated with ATP as possible, some being Sevulet and Gadgets.
