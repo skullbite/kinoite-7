@@ -40,6 +40,6 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 
 [WinBlues 7](https://github.com/winblues/winblues7) is another image built by [ledif](https://github.com/ledif) that installs ATP on top of Bazzite KDE Plasma. At the time of writing, the included taskbar component (SevenTasks) is broken.
 
-This image is built on top of [UBlue's kinoite image](https://github.com/ublue-os/main), which only includes the (GUI) apps that come by default in KDE Plasma under Fedora Atomic. (aside from Steam)
+This image is built on top of [UBlue's kinoite image](https://github.com/ublue-os/main), which only includes the (GUI) apps that come by default in KDE Plasma under Fedora Atomic. (Besides steam)
 
 Aside from that, the intent of Kinioite 7 is to include as many projects associated with ATP as possible, some being Sevulet and AeroUserChrome.
