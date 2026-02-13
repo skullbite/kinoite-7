@@ -1,8 +1,7 @@
 set-bash-profile $option="choose":
    #!/bin/bash
-   OPTIONS=("cmdprompt ublue fastfetch off")
+   OPTIONS=("cmdprompt fastfetch off")
    if [[ $option == "choose" ]]; then
-       echo
        echo -e "cmdprompt = Win7 command prompt.\nublue = Ublue's Message of the Day prompt\nfastfetch = Fastfetch\noff = No prompt"
        option=$(gum choose $OPTIONS)
    fi
@@ -28,8 +27,10 @@ toggle-win7-ps1:
     #!/bin/bash
     if [[ $(7just _get-config win-7-prompt) == "1" ]]; then
         7just _set-config win-7-prompt 0
+        echo "{{GREEN+BOLD}}Command Prompt PS1 disabled. Open a new terminal to see changes.{{NORMAL}}"
     else
         7just _set-config win-7-prompt 1
+        echo "{{GREEN+BOLD}}Command Prompt PS1 enabled. Open a new terminal to see changes.{{NORMAL}}"
     fi
 
 
@@ -48,6 +49,12 @@ set-cmd-prompt-konsole-theme:
    cat /usr/share/kin7/config/konsolerc > ~/.config/konsolerc
 
    echo "{{GREEN+BOLD}}Done. Open konsole again to see changes.{{NORMAL}}"
+
+_kin7-init:
+    7just _write-kvantum-config
+    mkdir -p ~/.config
+    touch ~/.config/no-show-user-motd
+    
 
 _write-kvantum-config:
     #!/bin/bash

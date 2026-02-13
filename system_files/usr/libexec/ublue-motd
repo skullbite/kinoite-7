@@ -43,4 +43,5 @@ if [[ -f "$TIP_FILE" ]]; then
 	GREENBOOT_ESCAPED=$(escape "$GREENBOOT")
 
 	sed -e "s/%IMAGE_NAME%/$IMAGE_NAME_ESCAPED/g" -e "s/%IMAGE_BRANCH%/$IMAGE_BRANCH_ESCAPED/g" -e "s/%TIP%/$TIP_ESCAPED/g" -e "s/%GREENBOOT%/$GREENBOOT_ESCAPED/g" /usr/share/ublue-os/motd/tips/kin7.md | tr '~' '\n' # | /usr/bin/glow -s /usr/share/ublue-os/motd/themes/$COLOR_SCHEME/$THEME.json -w 78 -
+	
 fi
