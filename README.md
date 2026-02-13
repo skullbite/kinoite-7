@@ -31,7 +31,7 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 
 ## Known Issues
 - SDDM shutdown screen is Vista
-- ~~PlymouthVista seemingly doesn't work (No windows-like boot screen)~~
+- PlymouthVista seemingly doesn't work (No windows-like boot screen)
 - Window Colors won't open in "Personalize" menu, can still be accessed with the Aero Glass Blur extension settings
 - System default wallpaper is Plasmas
 
