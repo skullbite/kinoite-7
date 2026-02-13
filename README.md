@@ -1,14 +1,14 @@
 > [!NOTE]  
-> **This project is NOT affiliated with Microsoft or Windows, We do not claim ownership any of the assets include**
+> **This project is NOT affiliated with Microsoft or Windows, We do not claim ownership to any of the assets included.**
 # 🪟 Kinoite 7 (aka: Kin7)
 
-A custom image that layers [AeroThemePlasma](https://gitgud.io/wackyideas/aerothemeplasma/) on top of KDE Plasma, ain't it purdy?
+An OCI image that layers [AeroThemePlasma](https://gitgud.io/wackyideas/aerothemeplasma/) on top of KDE Plasma, ain't it purdy?
 
-[SCREENSHOT PENDING]
+![Kinoite 7 Preview](https://github.com/skullbite/kinoite-7/blob/main/repo_files/Preview.png?raw=true)
 ## Features
 - Steam + Tailscale preinstalled
 - Almost* everything offered by ATP
-- Wallpapers from Windows 7 (Thanks to the [Frutiger Aero Archive](https://frutigeraeroarchive.org/wallpapers/windows_7))
+- Wallpapers from Windows 7
 - More options for visual changes via 7just
 - ~~Apps from Sevulet~~ (WIP)
 - ~~Gadgets~~ (WIP)
@@ -22,22 +22,22 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 ```
 
 ## Credits
-- UBlue for both the image template, and the Kinoite image this is based off
-- WackyIdeas for making ATP
-- [WinBlues 7](https://github.com/winblues/winblues7), the inspiration for this image
+- [UBlue](https://github.com/ublue-os/): Made the [image template](https://github.com/ublue-os/image-template), and the [Kinoite](https://github.com/ublue-os/main) image this is based off
+- [WackyIdeas](https://gitgud.io/wackyideas): Making ATP
 - [Frutiger Aero Archive](https://frutigeraeroarchive.org/wallpapers/windows_7): where the Win7 wallpapers were sourced
-- [CachyOS](https://cachyos.org/): two of their wallpapers looked fitting for this
+- [CachyOS](https://cachyos.org/): Two of their wallpapers looked fitting for this
+- [WinBlues 7](https://github.com/winblues/winblues7): The original inspiration for this image + their plymouthvista script
 
 
 ## Known Issues
 - SDDM shutdown screen is Vista
-- PlymouthVista seemingly doesn't work (No windows-like boot screen)
-- Window colors won't open in "Personalize" menu, can still be accessed with the Aero Glass Blur extension settings
-- System default wallpaper is Plasmas rather than Windows
+- ~~PlymouthVista seemingly doesn't work (No windows-like boot screen)~~
+- Window Colors won't open in "Personalize" menu, can still be accessed with the Aero Glass Blur extension settings
+- System default wallpaper is Plasmas
 
-## How is this different from WinBlues 7?
-[WinBlues 7](https://github.com/winblues/winblues7) is another image built by [ledif](https://github.com/ledif) that installs ATP on Bazzite KDE Plasma. At the time of writing, the included taskbar component (SevenTasks) is broken.
+## "How is this different from WinBlues 7?"
+[WinBlues 7](https://github.com/winblues/winblues7) is another image built by [ledif](https://github.com/ledif) that installs ATP on top of Bazzite KDE Plasma. At the time of writing, the included taskbar component (SevenTasks) is broken.
 
-This image is built on top of UBlue's kinoite image, which only includes the apps that come by default in KDE Plasma under Fedora Atomic. (aside from Steam)
+This image is built on top of [UBlue's kinoite image](https://github.com/ublue-os/main), which only includes the (GUI) apps that come by default in KDE Plasma under Fedora Atomic. (aside from Steam)
 
-Despite being built using similar tools, these projects have different goals entirely.
+Aside from that, the intent of Kinioite 7 is to look *as* "7-ish" as possible.
