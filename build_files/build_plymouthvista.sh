@@ -32,7 +32,7 @@ cp -r $(pwd) /usr/share/plymouth/themes/PlymouthVista
 #chmod +x ./install.sh
 #./compile.sh
 #./install.sh -s -q
-sh omitPlymouth.sh
+# sh omitPlymouth.sh
 plymouth-set-default-theme PlymouthVista
 dracut --force --regenerate-all --verbose
 
