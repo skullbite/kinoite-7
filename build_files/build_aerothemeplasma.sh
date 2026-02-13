@@ -236,6 +236,4 @@ cp $CUR/misc/branding/kcminfo.png /usr/share/kin7/logo.png
 sed -i "s/Theme=bgrt/Theme=PlymouthVista/g" /usr/share/plymouth/plymouthd.defaults
 echo -e "[Theme]\nCurrent=sddm-theme-mod" > /etc/sddm.conf
 
-systemctl enable kvantum-config-write.service
-
 dnf autoremove -y

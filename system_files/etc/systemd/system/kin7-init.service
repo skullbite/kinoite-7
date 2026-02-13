@@ -1,5 +1,5 @@
 [Unit]
-Description=Write Kvantum config for current user if necessary
+Description=Initalize Kinoite 7 for new user, if necessary
 
 [Service]
 Type=oneshot

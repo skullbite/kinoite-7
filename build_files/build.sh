@@ -23,3 +23,4 @@ cat > /usr/share/ublue-os/image-info.json <<EOF
 EOF
 
 systemctl enable podman.socket
+systemctl enable kin7-init.service

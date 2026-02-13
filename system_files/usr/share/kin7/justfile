@@ -34,6 +34,16 @@ toggle-win7-ps1:
     fi
 
 
+toggle-fastfetch-alias:
+    #!/bin/bash
+    if [[ $(7just _get-config win-7-prompt) == "1" ]]; then
+        7just _set-config win-7-prompt 0
+        echo "{{GREEN+BOLD}}Fastfetch alias disabled.{{NORMAL}}"
+    else
+        7just _set-config win-7-prompt 1
+        echo "{{GREEN+BOLD}}Fastfetch alias enabled. Open a new terminal to see changes.{{NORMAL}}"
+    fi
+
 set-cmd-prompt-konsole-theme:
    #!/bin/bash
    konsole_path=~/.local/share/konsole/
@@ -51,10 +61,15 @@ set-cmd-prompt-konsole-theme:
    echo "{{GREEN+BOLD}}Done. Open konsole again to see changes.{{NORMAL}}"
 
 _kin7-init:
+    #!/bin/bash
+    init_file=~/.config/kin7-initialized
+    if [[ -f $init_file ]]; then exit fi
+
     7just _write-kvantum-config
     mkdir -p ~/.config
     touch ~/.config/no-show-user-motd
-    
+    touch $init_file
+
 
 _write-kvantum-config:
     #!/bin/bash
@@ -80,3 +95,4 @@ _get-config $key $default_value="":
     fi
     
     cat ~/.config/kin7/$key
+
