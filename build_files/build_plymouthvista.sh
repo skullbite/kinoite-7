@@ -5,7 +5,7 @@ set -exuo pipefail
 # fix dracut looking for the wrong kernel to rebuild
 FEDORA_KERNEL=$(ls /lib/modules | grep fc)
 if [[ ! -d /lib/modules/$(uname -r) ]]; then
-    ln -s /lib/modules/$FEDORA_KERNEL /lib/modules/lib/modules/$(uname -r)
+    ln -s /lib/modules/$FEDORA_KERNEL /lib/modules/$(uname -r)
 fi
 
 
