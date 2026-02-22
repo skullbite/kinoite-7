@@ -31,7 +31,7 @@ cd $CUR_DIR
 SU_CMD=
 USE_NINJA="-G Ninja"
 NINJA_PARAM="--ninja"
-LIBEXEC_DIR=lib
+LIBEXEC_DIR=libexec
 
 
 mkdir -p repos
