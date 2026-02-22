@@ -1,5 +1,5 @@
 #!/bin/bash
-case $(7just _get-config bash-profile cmdprompt) in
+case $(/usr/libexec/kin7-config-get bash-profile cmdprompt) in
     cmdprompt)
         echo -e "Fedora Kinoite [Version $(uname -r)]\nCopyright (c) $(date +%Y) Fedora Community. All rights reserved.\n"
         ;;
@@ -12,10 +12,10 @@ case $(7just _get-config bash-profile cmdprompt) in
 esac
 
 
-if [[ $(7just _get-config win-7-prompt) == "1" ]]; then
+if [[ $(/usr/libexec/kin7-config-get win-7-prompt) == "1" ]]; then
     PS1='C:${PWD//\//\\\\}> '
 fi
 
-if [[ $(7just _get-config no-fastfetch-alias 0) == "0" ]]; then
+if [[ $(/usr/libexec/kin7-config-get no-fastfetch-alias 0) == "0" ]]; then
     alias fastfetch="fastfetch --logo windows"
 fi 

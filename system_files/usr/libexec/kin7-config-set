@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir -p ~/.config/kin7
+echo "$2" > ~/.config/kin7/$1
+

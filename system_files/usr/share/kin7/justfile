@@ -1,6 +1,9 @@
+get-config := "/usr/libexec/kin7-config-get"
+set-config := "/usr/libexec/kin7-config-set"
+
 _default:
     @7just --list
-    
+
 set-bash-profile $option="choose":
    #!/bin/bash
    set -e pipefail
@@ -19,23 +22,23 @@ set-bash-profile $option="choose":
    case $option in
        cmdprompt)
            gum confirm "Would you like to enable command prompt PS1? ( ex. C:\var\home\\${USER}> )" && \
-           7just _set-config win-7-prompt 1 && \
+           {{ set-config }} win-7-prompt 1 && \
            echo "{{GREEN+BOLD}}Command Prompt PS1 enabled.{{NORMAL}}"
        ;;
    esac
 
-   7just _set-config bash-profile $option
+   {{ set-config }} bash-profile $option
    echo "{{GREEN+BOLD}}Bash profile set to '$option'. Open a new terminal to see the changes.{{NORMAL}}"
 
 toggle-win7-ps1:
     #!/bin/bash
     set -e pipefail
 
-    if [[ $(7just _get-config win-7-prompt) == "1" ]]; then
-        7just _set-config win-7-prompt 0
+    if [[ $({{ get-config }} win-7-prompt) == "1" ]]; then
+        {{ set-config }} win-7-prompt 0
         echo "{{GREEN+BOLD}}Command Prompt PS1 disabled. Open a new terminal to see changes.{{NORMAL}}"
     else
-        7just _set-config win-7-prompt 1
+        {{ set-config }} win-7-prompt 1
         echo "{{GREEN+BOLD}}Command Prompt PS1 enabled. Open a new terminal to see changes.{{NORMAL}}"
     fi
 
@@ -44,11 +47,11 @@ toggle-fastfetch-alias:
     #!/bin/bash
     set -e pipefail
 
-    if [[ $(7just _get-config no-fastfetch-alias) == "1" ]]; then
-        7just _set-config  no-fastfetch-alias 0
+    if [[ $({{ get-config }} no-fastfetch-alias) == "1" ]]; then
+        {{ set-config }} no-fastfetch-alias 0
         echo "{{GREEN+BOLD}}Fastfetch alias disabled.{{NORMAL}}"
     else
-        7just _set-config no-fastfetch-alias 1
+        {{ set-config }} no-fastfetch-alias 1
         echo "{{GREEN+BOLD}}Fastfetch alias enabled. Open a new terminal to see changes.{{NORMAL}}"
     fi
 
@@ -98,19 +101,4 @@ _write-kvantum-config:
     else
         echo "File already exists"
     fi
-
-_set-config $key $value:
-    #!/bin/bash
-    mkdir -p ~/.config/kin7
-    echo "$value" > ~/.config/kin7/$key
-
-_get-config $key $default_value="":
-    #!/bin/bash
-    mkdir -p ~/.config/kin7
-    if [[ ! -f ~/.config/kin7/$key ]]; then
-        echo "$default_value"
-        exit
-    fi
-    
-    cat ~/.config/kin7/$key
 
