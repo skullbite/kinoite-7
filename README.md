@@ -10,11 +10,8 @@
 - Everything offered by ATP
 - Wallpapers from Windows 7
 - More options for visual changes via 7just
-- Gadgets
 - ~~Apps from Sevulet~~ (WIP)
 - ~~Gadgets~~ (WIP)
-
-\* see known issues 
 
 ## Install
 Switch to us from another bootc image:
