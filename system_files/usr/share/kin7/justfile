@@ -55,6 +55,17 @@ toggle-fastfetch-alias:
         echo "{{GREEN+BOLD}}Fastfetch alias enabled. Open a new terminal to see changes.{{NORMAL}}"
     fi
 
+update:
+    #!/bin/bash
+    ujust update
+    # allow terminal window to close before showing toast
+    (
+        val=$(notify-send "" "Please reboot your system to apply all changes." --expire-time=15000 --icon="system-software-update" --app-name="System Update Complete" --action="skip=Not Now" --action="reboot=Reboot")
+        if [[ $val == "reboot" ]]; then
+            systemctl reboot
+        fi
+    ) & &>/dev/null
+
 set-cmd-prompt-konsole-theme:
    #!/bin/bash
    set -e pipefail
