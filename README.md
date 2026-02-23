@@ -26,7 +26,7 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 - [WackyIdeas](https://gitgud.io/wackyideas): Making ATP
 - [Frutiger Aero Archive](https://frutigeraeroarchive.org/wallpapers/windows_7): where the Win7 wallpapers were sourced
 - [CachyOS](https://cachyos.org/): Two of their wallpapers looked fitting for this
-- [WinBlues 7](https://github.com/winblues/winblues7): The original inspiration for this image + their plymouthvista script
+- [WinBlues 7](https://github.com/winblues/winblues7): The original inspiration for this image
 
 
 ## Known Issues
