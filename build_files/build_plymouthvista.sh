@@ -4,10 +4,6 @@ set -exuo pipefail
 
 # fix dracut looking for the wrong kernel to rebuild
 FEDORA_KERNEL=$(ls /lib/modules | grep fc)
-if [[ ! -d /lib/modules/$(uname -r) ]]; then
-    ln -s /lib/modules/$FEDORA_KERNEL /lib/modules/$(uname -r)
-fi
-
 
 dnf install -y plymouth plymouth-scripts plymouth-plugin-script ImageMagick
 cd /tmp
@@ -17,5 +13,4 @@ cd PlymouthVista
 sed -i "s/vista\";/7\";/g" src/plymouth_config.sp
 sh compile.sh 
 sh install.sh -s
-
-# dracut --force --verbose
+dracut --force --verbose --kver $FEDORA_KERNEL
