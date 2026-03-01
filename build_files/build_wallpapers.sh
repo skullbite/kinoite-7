@@ -45,14 +45,15 @@ done
 ln -s "/usr/share/wallpapers/Win7 - #0" /usr/share/wallpapers/Default                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
 
 mkdir -p /usr/share/backgrounds
-ln -sfv $DEFAULT_WP /usr/share/backgrounds/default.jxl
-ln -sfv $DEFAULT_WP /usr/share/backgrounds/default-dark.jxl
+
+ln -sf "$DEFAULT_WP" /usr/share/backgrounds/default.jxl
+ln -sf "$DEFAULT_WP" /usr/share/backgrounds/default-dark.jxl
 
 FEDORA_BG_DIR="/usr/share/backgrounds/fedora-workstation"
 mkdir -p $FEDORA_BG_DIR
 
-ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default.jxl
-ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default-dark.jxl
+ln -s "$DEFAULT_WP" $FEDORA_BG_DIR/default.jxl
+ln -s "$DEFAULT_WP" $FEDORA_BG_DIR/default-dark.jxl
 
-ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default.png
-ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default-dark.png
+ln -s "$DEFAULT_WP" $FEDORA_BG_DIR/default.png
+ln -s "$DEFAULT_WP" $FEDORA_BG_DIR/default-dark.png
