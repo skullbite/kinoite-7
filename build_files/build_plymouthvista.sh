@@ -2,6 +2,11 @@
 
 set -exuo pipefail
 
+compile_kernel () {
+    /usr/bin/dracut --no-hostonly --kver "${KERNEL_VERSION}" --reproducible -v --add ostree -f "/lib/modules/${KERNEL_VERSION}/initramfs.img"
+    chmod 0600 "/lib/modules/${KERNEL_VERSION}/initramfs.img"
+}
+
 # fix dracut looking for the wrong kernel to rebuild
 KERNEL_VERSION=$(ls /lib/modules | grep fc)
 
@@ -20,9 +25,6 @@ sh compile.sh
 sh install.sh -s
 
 export DRACUT_NO_XATTR=1
-/usr/bin/dracut --no-hostonly --kver "${KERNEL_VERSION}" --reproducible -v --add ostree -f "/lib/modules/${KERNEL_VERSION}/initramfs.img"
-chmod 0600 "/lib/modules/${KERNEL_VERSION}/initramfs.img"
+compile_kernel
 sh omitPlymouth.sh
-
-/usr/bin/dracut --no-hostonly --kver "${KERNEL_VERSION}" --reproducible -v --add ostree -f "/lib/modules/${KERNEL_VERSION}/initramfs.img"
-chmod 0600 "/lib/modules/${KERNEL_VERSION}/initramfs.img"
+compile_kernel
