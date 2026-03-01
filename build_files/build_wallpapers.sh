@@ -9,6 +9,8 @@ set -ouex pipefail
 # Wave+WaveDark ripped from CachyOS
 # https://github.com/CachyOS/cachyos-wallpapers
 
+# Credit to Shiny Lisan for helping me figure out setting a default wallpaper!
+
 DEFAULT_WP="/usr/share/wallpapers/Win7 - #0/contents/images/1920x1200.jpg"
 
 make_wallpaper () {

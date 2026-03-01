@@ -26,10 +26,6 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 - [CachyOS](https://cachyos.org/): Two of their wallpapers looked fitting for this
 - [WinBlues 7](https://github.com/winblues/winblues7): The original inspiration for this image
 
-
-## Known Issues
-- System default wallpaper is Plasmas
-
 ## "How is this different from WinBlues 7?"
 > TL;DR: This image is based on Kinoite rather than Bazzite, and attempts to incorporate more ATP associated projects.
 
