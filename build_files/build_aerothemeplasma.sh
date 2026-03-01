@@ -121,6 +121,8 @@ $SU_CMD cmake --install build || exit 1
 cp build/install_manifest.txt "$CUR_DIR/manifest/libplasma_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
-echo "Done."
+rm /usr/share/wayland-sessions/plasma.desktop
+sed -i "s/#Current=01-breeze-fedora/Current=sddm-theme-mod/g" /etc/sddm.conf
+sed -i "s/#CursorTheme=/CursorTheme=aero-drop/g" /etc/sddm.conf
 
 dnf autoremove -y
