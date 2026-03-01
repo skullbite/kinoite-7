@@ -9,6 +9,8 @@ set -ouex pipefail
 # Wave+WaveDark ripped from CachyOS
 # https://github.com/CachyOS/cachyos-wallpapers
 
+DEFAULT_WP="/usr/share/wallpapers/Win7 - #0/contents/images/1920x1200.jpg"
+
 make_wallpaper () {
     # $1 = Display name
     # $2 = Path to image
@@ -40,5 +42,17 @@ for i in $(ls /ctx/wallpapers/cachyos); do
     make_wallpaper "$i" "/ctx/wallpapers/cachyos/$i" 3840x2160 "CachyOS"
 done 
 
-ln -s "/usr/share/wallpapers/Win7 - #0" /usr/share/wallpapers/Default
-# cat /usr/share/plasma/wallpapers/org.kde.image/contents/config/main.xml
+ln -s "/usr/share/wallpapers/Win7 - #0" /usr/share/wallpapers/Default                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+
+mkdir -p /usr/share/backgrounds
+ln -sfv $DEFAULT_WP /usr/share/backgrounds/default.jxl
+ln -sfv $DEFAULT_WP /usr/share/backgrounds/default-dark.jxl
+
+FEDORA_BG_DIR="/usr/share/backgrounds/fedora-workstation"
+mkdir -p $FEDORA_BG_DIR
+
+ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default.jxl
+ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default-dark.jxl
+
+ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default.png
+ln -sfv $DEFAULT_WP $FEDORA_BG_DIR/default-dark.png
