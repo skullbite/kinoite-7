@@ -5,30 +5,30 @@ _default:
     @7just --list
 
 set-bash-profile $option="choose":
-   #!/bin/bash
-   set -e pipefail
-   OPTIONS=("cmdprompt fastfetch off")
-   if [[ $option == "choose" ]]; then
-       echo -e "cmdprompt = Win7 command prompt.\nublue = Ublue's Message of the Day prompt\nfastfetch = Fastfetch\noff = No prompt"
-       option=$(gum choose $OPTIONS)
-   fi
+    #!/bin/bash
+    set -e pipefail
+    OPTIONS=("cmdprompt fastfetch off")
+    if [[ $option == "choose" ]]; then
+        echo -e "cmdprompt = Win7 command prompt.\nublue = Ublue's Message of the Day prompt\nfastfetch = Fastfetch\noff = No prompt"
+        option=$(gum choose $OPTIONS)
+    fi
 
-   if [[ $(echo $OPTIONS | sed "s/$option/ /g") == $OPTIONS ]]; then
-       echo "Invalid option '$option':"
-       echo $OPTIONS
-       exit 1
-   fi
+    if [[ $(echo $OPTIONS | sed "s/$option/ /g") == $OPTIONS ]]; then
+        echo "Invalid option '$option':"
+        echo $OPTIONS
+        exit 1
+    fi
 
-   case $option in
-       cmdprompt)
-           gum confirm "Would you like to enable command prompt PS1? ( ex. C:\var\home\\${USER}> )" && \
-           {{ set-config }} win-7-prompt 1 && \
-           echo "{{GREEN+BOLD}}Command Prompt PS1 enabled.{{NORMAL}}"
-       ;;
-   esac
+    case $option in
+        cmdprompt)
+            gum confirm "Would you like to enable command prompt PS1? ( ex. C:\var\home\\${USER}> )" && \
+            {{ set-config }} win-7-prompt 1 && \
+            echo "{{ GREEN + BOLD }}Command Prompt PS1 enabled.{{ NORMAL }}"
+        ;;
+    esac
 
-   {{ set-config }} bash-profile $option
-   echo "{{GREEN+BOLD}}Bash profile set to '$option'. Open a new terminal to see the changes.{{NORMAL}}"
+    {{ set-config }} bash-profile $option
+    echo "{{ GREEN + BOLD }}Bash profile set to '$option'. Open a new terminal to see the changes.{{ NORMAL }}"
 
 toggle-win7-ps1:
     #!/bin/bash
@@ -36,12 +36,11 @@ toggle-win7-ps1:
 
     if [[ $({{ get-config }} win-7-prompt) == "1" ]]; then
         {{ set-config }} win-7-prompt 0
-        echo "{{GREEN+BOLD}}Command Prompt PS1 disabled. Open a new terminal to see changes.{{NORMAL}}"
+        echo "{{ GREEN + BOLD }}Command Prompt PS1 disabled. Open a new terminal to see changes.{{ NORMAL }}"
     else
         {{ set-config }} win-7-prompt 1
-        echo "{{GREEN+BOLD}}Command Prompt PS1 enabled. Open a new terminal to see changes.{{NORMAL}}"
+        echo "{{ GREEN + BOLD }}Command Prompt PS1 enabled. Open a new terminal to see changes.{{ NORMAL }}"
     fi
-
 
 toggle-fastfetch-alias:
     #!/bin/bash
@@ -49,10 +48,10 @@ toggle-fastfetch-alias:
 
     if [[ $({{ get-config }} no-fastfetch-alias) == "1" ]]; then
         {{ set-config }} no-fastfetch-alias 0
-        echo "{{GREEN+BOLD}}Fastfetch alias disabled.{{NORMAL}}"
+        echo "{{ GREEN + BOLD }}Fastfetch alias disabled.{{ NORMAL }}"
     else
         {{ set-config }} no-fastfetch-alias 1
-        echo "{{GREEN+BOLD}}Fastfetch alias enabled. Open a new terminal to see changes.{{NORMAL}}"
+        echo "{{ GREEN + BOLD }}Fastfetch alias enabled. Open a new terminal to see changes.{{ NORMAL }}"
     fi
 
 update:
@@ -67,30 +66,30 @@ update:
     ) & &>/dev/null
 
 set-cmd-prompt-konsole-theme:
-   #!/bin/bash
-   set -e pipefail
+    #!/bin/bash
+    set -e pipefail
 
-   konsole_path=~/.local/share/konsole/
+    konsole_path=~/.local/share/konsole/
 
-   gum confirm "{{YELLOW+BOLD}}This will overwrite your konsole config. Would you like to continue?{{NORMAL}}"
-   mkdir -p $konsole_path
-   if [[ ! -f $konsole_path/Kinoite7.profile ]]; then
-       echo "{{BOLD}}Wrting Kinoite7 konsole profile{{NORMAL}}"
-       ln -s /usr/share/kin7/config/konsole.profile $konsole_path/Kinoite7.profile
-   fi
-   
-   echo "{{BOLD}}Writing konsole config{{NORMAL}}"
-   cat /usr/share/kin7/config/konsolerc > ~/.config/konsolerc
+    gum confirm "{{ YELLOW + BOLD }}This will overwrite your konsole config. Would you like to continue?{{ NORMAL }}"
+    mkdir -p $konsole_path
+    if [[ ! -f $konsole_path/Kinoite7.profile ]]; then
+        echo "{{ BOLD }}Wrting Kinoite7 konsole profile{{ NORMAL }}"
+        ln -s /usr/share/kin7/config/konsole.profile $konsole_path/Kinoite7.profile
+    fi
 
-   echo "{{GREEN+BOLD}}Done. Open konsole again to see changes.{{NORMAL}}"
+    echo "{{ BOLD }}Writing konsole config{{ NORMAL }}"
+    cat /usr/share/kin7/config/konsolerc > ~/.config/konsolerc
+
+    echo "{{ GREEN + BOLD }}Done. Open konsole again to see changes.{{ NORMAL }}"
 
 _kin7-init:
     #!/bin/bash
     set -e pipefail
 
     init_file=~/.config/kin7-initialized
-    if [[ -f $init_file ]]; then 
-        exit 
+    if [[ -f $init_file ]]; then
+        exit
     fi
 
     7just _write-kvantum-config
@@ -98,7 +97,6 @@ _kin7-init:
     # doesn't work here
     touch ~/.config/no-show-user-motd
     touch $init_file
-
 
 _write-kvantum-config:
     #!/bin/bash
@@ -112,4 +110,3 @@ _write-kvantum-config:
     else
         echo "File already exists"
     fi
-
