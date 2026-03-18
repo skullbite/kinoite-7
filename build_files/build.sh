@@ -4,6 +4,7 @@ set -ouex pipefail
 
 rsync -rvK /ctx/sys/ /
 python /ctx/update_os_release.py
+echo "Kin7" >> /etc/hostname
 
 # sed -i "s/#Session=/Session=AeroThemePlasma.desktop/g" /etc/sddm.conf
 
