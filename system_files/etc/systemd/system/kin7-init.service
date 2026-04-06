@@ -1,9 +1,0 @@
-[Unit]
-Description=Initalize Kinoite 7 for new user, if necessary
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/7just _kin7-init
-
-[Install]
-WantedBy=multi-user.target
