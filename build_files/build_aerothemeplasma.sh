@@ -2,11 +2,11 @@
 
 set -ouex pipefail
 
-mkdir -p /tmp/fake-usr/local
-install_component () {
-    kpackagetool6 -g -t "$2" -i "$1" || \
-    kpackagetool6 -g -t "$2" -u "$1"
-}
+# mkdir -p /tmp/fake-usr/local
+# install_component () {
+#     kpackagetool6 -g -t "$2" -i "$1" || \
+#     kpackagetool6 -g -t "$2" -u "$1"
+# }
 
 
 cd /tmp
@@ -24,7 +24,6 @@ dnf install -y ninja gcc gcc-c++ cmake make extra-cmake-modules plasma-workspace
 
 
 CUR_DIR=/tmp/atp
-
 
 git clone --depth 1 https://gitgud.io/aeroshell/atp/aerothemeplasma/ $CUR_DIR
 cd $CUR_DIR
@@ -124,7 +123,10 @@ cp build/install_manifest.txt "$CUR_DIR/manifest/libplasma_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
 rm /usr/share/wayland-sessions/plasma.desktop
-sed -i "s/#Current=01-breeze-fedora/Current=sddm-theme-mod/g" /etc/sddm.conf
-sed -i "s/#CursorTheme=/CursorTheme=aero-drop/g" /etc/sddm.conf
+(
+    echo "[Theme]" 
+    echo "Current=sddm-theme-mod"
+    echo "CursorTheme=aero-drop"
+) >> /etc/plasmaconfig.conf
 
 dnf autoremove -y
