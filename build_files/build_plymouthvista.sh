@@ -25,6 +25,6 @@ sh compile.sh
 sh install.sh -s
 
 export DRACUT_NO_XATTR=1
-compile_kernel
-# sh omitPlymouth.sh
 # compile_kernel
+sh omitPlymouth.sh
+compile_kernel
