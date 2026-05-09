@@ -11,19 +11,19 @@ echo "Kin7" >> /etc/hostname
 dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
 dnf install -y fastfetch steam tailscale gum glow
 
-# cat > /usr/share/ublue-os/image-info.json <<EOF
-# {
-#   "image-name": "Kinoite 7",
-#   "image-vendor": "skullbite",
-#   "image-ref": "kinoite-7",
-#   "image-tag": "latest",
-#   "image-branch": "main",
-#   "base-image-name": "Fedora Kinoite",
-#   "fedora-version": "$(rpm -E %fedora)",
-#   "version": "$(rpm -E %fedora)",
-#   "version-pretty": "$(rpm -E %fedora)"
-# }
-# EOF
+cat > /usr/share/ublue-os/image-info.json <<EOF
+{
+  "image-name": "Kinoite 7",
+  "image-vendor": "skullbite",
+  "image-ref": "kinoite-7",
+  "image-tag": "latest",
+  "image-branch": "main",
+  "base-image-name": "Fedora Kinoite",
+  "fedora-version": "$(rpm -E %fedora)",
+  "version": "$(rpm -E %fedora)",
+  "version-pretty": "$(rpm -E %fedora)"
+}
+EOF
 
 install -d /usr/share/bash-completion/completions /usr/share/zsh/site-functions /usr/share/fish/vendor_completions.d/
 7just --completions bash | sed -E 's/([\(_" ])just/\17just/g' > /usr/share/bash-completion/completions/7just
@@ -32,3 +32,5 @@ install -d /usr/share/bash-completion/completions /usr/share/zsh/site-functions 
 
 systemctl enable podman.socket
 systemctl enable kin7-init.service
+systemctl disable plasmalogin.service
+systemctl enable sddm.service
