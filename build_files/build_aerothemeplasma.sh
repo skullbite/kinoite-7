@@ -126,6 +126,9 @@ rm /usr/share/wayland-sessions/plasma.desktop
 
 sed -i "s/#Current=01-breeze-fedora/Current=sddm-theme-mod/g" /etc/sddm.conf
 sed -i "s/#CursorTheme=/CursorTheme=aero-drop/g" /etc/sddm.conf
+
+# atp provides its own distro info so overwrite
+cp /ctx/sys/etc/xdg/kcm-about-distrorc /etc/xdg/kcm-about-distrorc
 # (
 #     echo "[Theme]" 
 #     echo "Current=sddm-theme-mod"
