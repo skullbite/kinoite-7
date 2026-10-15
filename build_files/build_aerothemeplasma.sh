@@ -22,18 +22,14 @@ fc-cache -f -r -v
 
 dnf install -y wayland-protocols-devel sddm ninja gcc gcc-c++ cmake make extra-cmake-modules plasma-workspace-devel libksysguard-devel kvantum qt6-qtmultimedia-devel qt6-qt5compat-devel libplasma-devel qt6-qtbase-devel qt6-qtwayland-devel plasma-activities-devel kf6-kpackage-devel kf6-kglobalaccel-devel qt6-qtsvg-devel wayland-devel plasma-wayland-protocols kf6-ksvg-devel kf6-kcrash-devel kf6-kguiaddons-devel kf6-kcmutils-devel kf6-kio-devel kdecoration-devel kf6-ki18n-devel kf6-knotifications-devel kf6-kirigami-devel kf6-kiconthemes-devel cmake gmp-ecm-devel kf5-plasma-devel libepoxy-devel kwin-devel kf6-karchive-devel plasma-wayland-protocols-devel qt6-qtbase-private-devel qt6-qtbase-devel kf6-knewstuff-devel kf6-knotifyconfig-devel kf6-attica-devel kf6-krunner-devel kf6-kdbusaddons-devel kf6-sonnet-devel plasma5support-devel plasma-activities-stats-devel polkit-qt6-1-devel qt-devel libdrm-devel kf6-kitemmodels-devel kf6-kstatusnotifieritem-devel kf6-frameworkintegration-devel
 
-
 CUR_DIR=/tmp/atp
 
 git clone --depth 1 https://gitgud.io/aeroshell/atp/aerothemeplasma/ $CUR_DIR
 cd $CUR_DIR
 
-SU_CMD=
 USE_NINJA="-G Ninja"
-NINJA_PARAM="--ninja"
 LIBEXEC_DIR=libexec
 UAC_LIBEXEC_DIR=libexec/kf6
-
 
 mkdir -p repos
 mkdir -p manifest
@@ -43,9 +39,9 @@ cd repos
 git clone https://gitgud.io/aeroshell/uac-polkit-agent.git uac-polkit-agent
 cd uac-polkit-agent
 git pull
-cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build . || exit 1
-cmake --build build || exit 1
-$SU_CMD cmake --install build || exit 1
+cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/uac-polkit-agent_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
@@ -53,9 +49,9 @@ cd "$CUR_DIR/repos"
 git clone https://gitgud.io/aeroshell/smod.git smod
 cd smod
 git pull
-cmake -DCMAKE_INSTALL_PREFIX=/usr -B build . || exit 1
-cmake --build build || exit 1
-cmake --install build || exit 1
+cmake -DCMAKE_INSTALL_PREFIX=/usr -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/smod_install_manifest.txt"
 # cp smodglow/build-wl/install_manifest.txt "$CUR_DIR/manifest/smodglow_install_manifest.txt"
 # cp smodglow/build/install_manifest.txt "$CUR_DIR/manifest/smodglow-x11_install_manifest.txt"
@@ -69,9 +65,9 @@ git pull
 # fix write to /usr/local
 sed -i "s/local\///g" mimetype/CMakeLists.txt
 cat mimetype/CMakeLists.txt
-cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build . || exit 1
-cmake --build build || exit 1 
-cmake --install build || exit 1
+cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
+cmake --build build 
+cmake --install build
 update-mime-database "/usr/share/mime"
 cp build/install_manifest.txt "$CUR_DIR/manifest/aeroshell-workspace_install_manifest.txt"
 cd "$CUR_DIR/repos"
@@ -80,9 +76,9 @@ cd "$CUR_DIR/repos"
 git clone https://gitgud.io/aeroshell/aeroshell-kwin-components.git aeroshell-kwin-components
 cd aeroshell-kwin-components
 git pull
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DKWIN_BUILD_WAYLAND=ON -B build . || exit 1
-cmake --build build || exit 1
-$SU_CMD cmake --install build || exit 1
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DKWIN_BUILD_WAYLAND=ON -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/aeroshell-kwin-components_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
@@ -90,9 +86,9 @@ cd "$CUR_DIR/repos"
 git clone https://gitgud.io/aeroshell/atp/aerothemeplasma-icons aerothemeplasma-icons
 cd aerothemeplasma-icons
 git pull
-cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build . || exit 1
-cmake --build build || exit 1
-$SU_CMD cmake --install build || exit 1
+cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/icons_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
@@ -100,17 +96,17 @@ cd "$CUR_DIR/repos"
 git clone https://gitgud.io/aeroshell/atp/aerothemeplasma-sounds aerothemeplasma-sounds
 cd aerothemeplasma-sounds
 git pull
-cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build . || exit 1
-cmake --build build || exit 1
-$SU_CMD cmake --install build || exit 1
+cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/sounds_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
 # Aerothemeplasma
 cd "$CUR_DIR"
-cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=$LIBEXEC_DIR -B build . || exit 1
-cmake --build build || exit 1
-$SU_CMD cmake --install build || exit 1
+cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBEXECDIR=$LIBEXEC_DIR -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/aerothemeplasma_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
@@ -118,9 +114,9 @@ cd "$CUR_DIR/repos"
 git clone https://gitgud.io/aeroshell/libplasma.git libplasma
 cd libplasma
 git pull
-cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build . || exit 1
-cmake --build build || exit 1
-$SU_CMD cmake --install build || exit 1
+cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
+cmake --build build
+cmake --install build
 cp build/install_manifest.txt "$CUR_DIR/manifest/libplasma_install_manifest.txt"
 cd "$CUR_DIR/repos"
 

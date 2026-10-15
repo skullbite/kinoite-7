@@ -8,7 +8,7 @@ echo "Kin7" >> /etc/hostname
 
 # sed -i "s/#Session=/Session=AeroThemePlasma.desktop/g" /etc/sddm.conf
 
-dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm -y
+
 dnf install -y fastfetch steam tailscale gum glow
 
 cat > /usr/share/ublue-os/image-info.json <<EOF
