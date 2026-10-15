@@ -11,6 +11,10 @@ echo "Kin7" >> /etc/hostname
 
 dnf install -y fastfetch steam tailscale gum glow
 
+dnf copr enable -y secureblue/packages
+dnf install -y homebrew
+dnf copr disable -y secureblue/packages
+
 cat > /usr/share/ublue-os/image-info.json <<EOF
 {
   "image-name": "Kinoite 7",
