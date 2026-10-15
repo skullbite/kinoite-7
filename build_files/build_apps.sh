@@ -4,7 +4,7 @@
 
 set -exuo pipefail
 
-dnf -y install uv gwenview kf6-kio cmake ninja kf6-kio-devel kf6-kparts-devel kf6-baloo-devel kf6-kcoreaddons-devel libjpeg-turbo-devel exiv2-devel lcms2-devel kimageannotator-qt6-devel libkdcraw-devel kcolorpicker-qt6-devel
+dnf install -y kf6-kio cmake ninja kf6-kio-devel kf6-kparts-devel kf6-baloo-devel kf6-kcoreaddons-devel libjpeg-turbo-devel exiv2-devel lcms2-devel kimageannotator-qt6-devel libkdcraw-devel kcolorpicker-qt6-devel patchelf
 
 cd /tmp
 
@@ -35,7 +35,8 @@ cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -B build .
 cmake --build build
 cmake --install build
 
-git clone --depth 1 https://gitgud.io/atmk/linver/
+git clone --depth 1 https://gitgud.io/wackyideas/linver
+cd linver
 
 mkdir -p build
 cd ./build/
@@ -43,13 +44,8 @@ qmake6 ../linver.pro
 make
 make install
 
-cd /tmp
+# cd /tmp
 
-git clone --depth 1 https://github.com/jayrickaby/run-7/
-cd run-7
-
-git submodule update --init --recursive
-sh build.sh
-
-mv dist/run-7 /usr/bin/run
+curl -o /usr/bin/run-7 https://github.com/jayrickaby/run-7/releases/download/v0.6.0/run-7
+chmod +x /usr/bin/run-7
 
