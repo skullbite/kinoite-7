@@ -24,8 +24,11 @@ dnf install -y wayland-protocols-devel sddm ninja gcc gcc-c++ cmake make extra-c
 
 CUR_DIR=/tmp/atp
 
-git clone --depth 1 https://gitgud.io/aeroshell/atp/aerothemeplasma/ $CUR_DIR
+git clone https://gitgud.io/aeroshell/atp/aerothemeplasma/ $CUR_DIR
 cd $CUR_DIR
+
+# currently waiting for ublue-os/kiniote-main to get 44!
+git checkout Plasma/6.7
 
 USE_NINJA="-G Ninja"
 LIBEXEC_DIR=libexec
@@ -48,7 +51,7 @@ cd "$CUR_DIR/repos"
 # SMOD
 git clone https://gitgud.io/aeroshell/smod.git smod
 cd smod
-git pull
+git checkout Plasma/6.7
 cmake -DCMAKE_INSTALL_PREFIX=/usr -B build .
 cmake --build build
 cmake --install build
@@ -61,12 +64,12 @@ cd "$CUR_DIR/repos"
 # Aeroshell Workspace
 git clone https://gitgud.io/aeroshell/aeroshell-workspace.git aeroshell-workspace
 cd aeroshell-workspace
-git pull
+git checkout Plasma/6.7
 # fix write to /usr/local
 sed -i "s/local\///g" mimetype/CMakeLists.txt
 cat mimetype/CMakeLists.txt
 cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
-cmake --build build 
+cmake --build build
 cmake --install build
 update-mime-database "/usr/share/mime"
 cp build/install_manifest.txt "$CUR_DIR/manifest/aeroshell-workspace_install_manifest.txt"
@@ -75,7 +78,7 @@ cd "$CUR_DIR/repos"
 # Aeroshell KWin
 git clone https://gitgud.io/aeroshell/aeroshell-kwin-components.git aeroshell-kwin-components
 cd aeroshell-kwin-components
-git pull
+git checkout Plasma/6.7
 cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DKWIN_BUILD_WAYLAND=ON -B build .
 cmake --build build
 cmake --install build
@@ -85,7 +88,6 @@ cd "$CUR_DIR/repos"
 # Aerothemeplasma icons
 git clone https://gitgud.io/aeroshell/atp/aerothemeplasma-icons aerothemeplasma-icons
 cd aerothemeplasma-icons
-git pull
 cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
 cmake --build build
 cmake --install build
@@ -95,7 +97,6 @@ cd "$CUR_DIR/repos"
 # Aerothemeplasma sounds
 git clone https://gitgud.io/aeroshell/atp/aerothemeplasma-sounds aerothemeplasma-sounds
 cd aerothemeplasma-sounds
-git pull
 cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
 cmake --build build
 cmake --install build
@@ -113,7 +114,7 @@ cd "$CUR_DIR/repos"
 # libplasma last
 git clone https://gitgud.io/aeroshell/libplasma.git libplasma
 cd libplasma
-git pull
+git checkout Plasma/6.7
 cmake $USE_NINJA -DCMAKE_INSTALL_PREFIX=/usr -B build .
 cmake --build build
 cmake --install build
@@ -128,7 +129,7 @@ sed -i "s/#CursorTheme=/CursorTheme=aero-drop/g" /etc/sddm.conf
 # atp provides its own distro info so overwrite
 cp /ctx/sys/etc/xdg/kcm-about-distrorc /etc/xdg/kcm-about-distrorc
 # (
-#     echo "[Theme]" 
+#     echo "[Theme]"
 #     echo "Current=sddm-theme-mod"
 #     echo "CursorTheme=aero-drop"
 # ) >> /etc/plasmaconfig.conf
