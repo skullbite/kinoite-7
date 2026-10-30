@@ -46,6 +46,9 @@ make install
 
 # cd /tmp
 
-curl -o /usr/bin/run-7 https://github.com/jayrickaby/run-7/releases/download/v0.6.0/run-7
-chmod +x /usr/bin/run-7
+git clone --depth 1 https://github.com/actuallyaridan/linux-taskmgr
+cd linux-taskmgr
 
+cmake -B build
+cmake --build build -j
+mv build/taskmgr /usr/bin
