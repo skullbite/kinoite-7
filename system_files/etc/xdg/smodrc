@@ -1,0 +1,21 @@
+[Windeco Exception 0]
+BorderSize=0
+Enabled=true
+ExceptionPattern=org.kde.gwenview
+ExceptionType=0
+HideCaption=false
+HideIcon=false
+HideInnerBorder=true
+HideTitleBar=false
+Mask=0
+
+[Windeco Exception 1]
+BorderSize=0
+Enabled=true
+ExceptionPattern=org.kde.dolphin
+ExceptionType=0
+HideCaption=false
+HideIcon=false
+HideInnerBorder=true
+HideTitleBar=false
+Mask=0
