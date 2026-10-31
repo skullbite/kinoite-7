@@ -52,3 +52,4 @@ cd linux-taskmgr
 cmake -B build
 cmake --build build -j
 mv build/taskmgr /usr/bin
+mv linux-taskmgr.desktop /usr/share/applications
