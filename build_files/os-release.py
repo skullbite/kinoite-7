@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+
 lines = []
 def get_key(key: str):
-    return [i for i in lines if key in i][0].split("=")[1].replace("\n", "").replace("\"", "")
+    return next(i for i in lines if key in i).split("=")[1].replace("\n", "").replace("\"", "")
 
 def edit_key(key: str, val: str | int):
-    dex = lines.index([i for i in lines if key in i][0])
+    dex = lines.index(next(i for i in lines if key in i))
     lines[dex] = f"{key}={f'"{val}"' if type(val) == str else val}\n"
 
 with open("/etc/os-release", "r") as file:

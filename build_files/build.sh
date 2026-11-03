@@ -2,39 +2,20 @@
 
 set -ouex pipefail
 
-rsync -rvK /ctx/sys/ /
-python /ctx/update_os_release.py
-echo "Kin7" >> /etc/hostname
-
-# sed -i "s/#Session=/Session=AeroThemePlasma.desktop/g" /etc/sddm.conf
-
-
-dnf install -y fastfetch steam tailscale gum glow
-
-dnf copr enable -y secureblue/packages
-dnf install -y homebrew
-dnf copr disable -y secureblue/packages
-
-cat > /usr/share/ublue-os/image-info.json <<EOF
-{
-  "image-name": "Kinoite 7",
-  "image-vendor": "skullbite",
-  "image-ref": "kinoite-7",
-  "image-tag": "latest",
-  "image-branch": "main",
-  "base-image-name": "Fedora Kinoite",
-  "fedora-version": "$(rpm -E %fedora)",
-  "version": "$(rpm -E %fedora)",
-  "version-pretty": "$(rpm -E %fedora)"
+build-and-install() {
+    cmake -G Ninja -DCMAKE_INSTALL_PREFIX=/usr $@ -B build .
+    cmake --build build
+    cmake --install build
 }
-EOF
 
-install -d /usr/share/bash-completion/completions /usr/share/zsh/site-functions /usr/share/fish/vendor_completions.d/
-7just --completions bash | sed -E 's/([\(_" ])just/\17just/g' > /usr/share/bash-completion/completions/7just
-7just --completions zsh | sed -E 's/([\(_" ])just/\17just/g' > /usr/share/zsh/site-functions/_7just
-7just --completions fish | sed -E 's/([\(_" ])just/\17just/g' > /usr/share/fish/vendor_completions.d/7just.fish
+export -f build-and-install
 
-systemctl enable podman.socket
-systemctl enable kin7-init.service
-systemctl disable plasmalogin.service
-systemctl enable sddm.service
+cd /ctx
+
+./deps.sh
+./fonts-wallpapers.sh
+./atp.sh
+./extras.sh
+./plymouthvista.sh
+./os-release.py
+./finalize.sh

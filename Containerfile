@@ -9,7 +9,7 @@ FROM ghcr.io/ublue-os/kinoite-main:latest
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
 # FROM ghcr.io/ublue-os/bluefin-nvidia:stable
-# 
+#
 # ... and so on, here are more base images
 # Universal Blue Images: https://github.com/orgs/ublue-os/packages
 # Fedora base image: quay.io/fedora/fedora-bootc:41
@@ -34,12 +34,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build_wallpapers.sh && \
-    /ctx/build_aerothemeplasma.sh && \
-    /ctx/build_gadgets.sh && \
-    /ctx/build_apps.sh && \
-    /ctx/build.sh && \
-    /ctx/build_plymouthvista.sh
+    /ctx/build.sh
 
 # RUN usermod -p "$(echo "debug" | mkpasswd -s)" root
 
