@@ -19,7 +19,7 @@ chmod +x {compile,install,omitPlymouth}.sh
 ./install.sh -s
 ./omitPlymouth.sh
 
-KERNEL_VERSION=$(ls /lib/modules | grep "14")
+KERNEL_VERSION=$(ls /lib/modules | grep fc)
 
 /usr/bin/dracut --no-hostonly --kver "${KERNEL_VERSION}" --reproducible -v --add ostree -f "/lib/modules/${KERNEL_VERSION}/initramfs.img"
 chmod 0600 "/lib/modules/${KERNEL_VERSION}/initramfs.img"
