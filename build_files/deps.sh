@@ -3,6 +3,7 @@
 set -ouex pipefail
 
 # did this because i had like 20 repeated dependencies and it was driving me nuts
+dnf remove -y nvtop
 
 # general
 dnf install -y fastfetch steam tailscale gum glow

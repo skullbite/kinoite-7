@@ -3,6 +3,8 @@ FROM scratch AS ctx
 COPY build_files /
 COPY system_files /sys
 
+#nvidia FROM ghcr.io/ublue-os/akmods-nvidia-open:main-45-7.2.13-300.fc45 AS akmods-nvidia-open
+
 # Base Image
 FROM ghcr.io/ublue-os/kinoite-main:beta
 
@@ -31,6 +33,8 @@ FROM ghcr.io/ublue-os/kinoite-main:beta
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    #nvidia --mount=type=bind,from=akmods-nvidia-open,src=/rpms,dst=/tmp/rpms/nvidia \
+    #nvidia --mount=type=bind,from=akmods-nvidia-open,src=/kernel-rpms,dst=/tmp/kernel-rpms \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
