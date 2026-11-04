@@ -186,7 +186,7 @@ jobs:
       - name: Push Nvidia Image To GHCR
         uses: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c # v2
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/dev'
-        id: push
+        id: push_nvidia
         env:
           REGISTRY_USER: ${{ github.actor }}
           REGISTRY_PASSWORD: ${{ github.token }}
