@@ -29,6 +29,12 @@ cp build/install_manifest.txt "$CUR_DIR/manifest/smod_install_manifest.txt"
 # cp smodglow/build-wl/install_manifest.txt "$CUR_DIR/manifest/smodglow_install_manifest.txt"
 # cp smodglow/build/install_manifest.txt "$CUR_DIR/manifest/smodglow-x11_install_manifest.txt"
 
+# Aeroshell SDDM KCM
+git clone https://gitgud.io/aeroshell/aeroshell-sddm-kcm.git
+cd aeroshell-sddm-kcm
+git checkout $CURRENT_BRANCH
+build-and-install
+cp build/install_manifest.txt "$CUR_DIR/manifest/aeroshell-sddm-kcm_install_manifest.txt"
 cd "$CUR_DIR/repos"
 
 # Aeroshell Workspace
