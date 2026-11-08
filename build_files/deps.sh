@@ -13,8 +13,6 @@ if [[ $GAMER == "0" ]]; then
     dnf copr disable -y secureblue/packages
     
     dnf install -y qt-devel
-else
-    /ctx/gamer.sh
 fi
 
 

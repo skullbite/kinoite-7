@@ -1,6 +1,10 @@
 #!/bin/bash
 
-rsync -rvK /ctx/sys/ /
+rsync -rvK /ctx/sys/shared/ /
+
+if [[ $GAMER == "0" ]]; then
+    /ctx/gamer.sh
+fi
 echo "kinoite7" >> /etc/hostname
 
 cat > /usr/share/ublue-os/image-info.json <<EOF
