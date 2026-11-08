@@ -1,0 +1,19 @@
+FROM scratch AS ctx
+COPY build_files /
+COPY system_files /sys
+
+FROM ghcr.io/ublue-os/akmods-nvidia-open:main-45-7.2.13-300.fc45 AS akmods-nvidia-open
+
+FROM ghcr.io/ublue-os/kinoite-main:beta
+
+RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
+    --mount=type=bind,from=akmods-nvidia-open,src=/rpms,dst=/tmp/rpms/nvidia \
+    --mount=type=bind,from=akmods-nvidia-open,src=/kernel-rpms,dst=/tmp/kernel-rpms \
+    --mount=type=cache,dst=/var/cache \
+    --mount=type=cache,dst=/var/log \
+    --mount=type=tmpfs,dst=/tmp \
+    # technically this containerfile is never used to build gamer edition
+    export GAMER=0 && \
+    /ctx/build.nvidia.sh
+
+RUN bootc container lint

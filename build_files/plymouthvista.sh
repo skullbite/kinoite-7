@@ -17,7 +17,14 @@ sed -i "s/Microsoft Corporation/Fedora Community/g" src/plymouth_config.sp
 chmod +x {compile,install,omitPlymouth}.sh
 ./compile.sh 
 ./install.sh -s
-./omitPlymouth.sh
+
+# ./omitPlymouth.sh
+DRACUT_CONF_LOCATION='/etc/dracut.conf.d/omit_plymouth.conf'
+DRACUT_CONF='\nomit_dracutmodules+=" plymouth "'
+
+printf "$DRACUT_CONF" > "$DRACUT_CONF_LOCATION"
+
+/usr/bin/dracut --force --regenerate-all --verbose
 
 KERNEL_VERSION=$(ls /lib/modules | grep fc)
 
