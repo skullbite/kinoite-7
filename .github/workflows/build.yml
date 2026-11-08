@@ -150,7 +150,7 @@ jobs:
           sed -i "s/bazzite-deck:stable/bazzite-deck-nvidia-open:stable/g" Containerfile
 
       - name: Build Gamer Nvidia Image
-        id: build_gamer_image
+        id: build_gamer_nvidia_image
         uses: redhat-actions/buildah-build@7a95fa7ee0f02d552a32753e7414641a04307056 # v2
         with:
           containerfiles: |
