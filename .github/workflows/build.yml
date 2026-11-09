@@ -147,7 +147,7 @@ jobs:
 
       - name: Tweak for Gamer Nvidia Image
         run: |
-          sed -i "s/bazzite-deck:stable/bazzite-deck-nvidia-open:stable/g" Containerfile
+          sed -i "s/bazzite-deck:stable/bazzite-deck-nvidia:stable/g" Containerfile
 
       - name: Build Gamer Nvidia Image
         id: build_gamer_nvidia_image
