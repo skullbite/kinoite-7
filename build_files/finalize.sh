@@ -1,9 +1,12 @@
 #!/bin/bash
 
-rsync -rvK /ctx/sys/shared/ /
+rsync -rvK /ctx/sys/ /
 
-if [[ $GAMER == "0" ]]; then
+if [[ $GAMER == "1" ]]; then
     /ctx/gamer.sh
+else
+    systemctl disable plasmalogin.service
+    systemctl enable sddm.service
 fi
 echo "kinoite7" >> /etc/hostname
 
@@ -28,5 +31,3 @@ install -d /usr/share/bash-completion/completions /usr/share/zsh/site-functions 
 
 systemctl enable podman.socket
 systemctl enable kin7-init.service
-systemctl disable plasmalogin.service
-systemctl enable sddm.service
