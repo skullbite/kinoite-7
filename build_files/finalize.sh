@@ -12,12 +12,12 @@ echo "kinoite7" >> /etc/hostname
 
 cat > /usr/share/ublue-os/image-info.json <<EOF
 {
-  "image-name": "Kinoite 7",
+  "image-name": "kinoite-7",
   "image-vendor": "skullbite",
   "image-ref": "kinoite-7",
-  "image-tag": "latest",
-  "image-branch": "main",
-  "base-image-name": "Fedora Kinoite",
+  "image-tag": "dev",
+  "image-branch": "dev",
+  "base-image-name": "kinoite",
   "fedora-version": "$(rpm -E %fedora)",
   "version": "$(rpm -E %fedora)",
   "version-pretty": "$(rpm -E %fedora)"
