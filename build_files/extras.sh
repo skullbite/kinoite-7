@@ -41,6 +41,17 @@ build-and-install
 cd /tmp
 
 git clone https://gitgud.io/atmk/app-store.git
-git checkout flatpak
 cd app-store
+git checkout flatpak
 build-and-install
+
+cd /tmp
+
+git clone https://github.com/ublue-os/yafti-gtk.git
+cd yafti-gtk
+git checkout f26443c8669edae05b35e20ad16fc74568637874
+git apply /ctx/patches/seven-portal-app.patch
+git apply /ctx/patches/seven-portal-desktop.patch
+
+cp io.github.ublue_os.yafti_gtk.desktop /usr/share/applications/seven-portal.desktop
+cp yafti_gtk.py /usr/share/kin7

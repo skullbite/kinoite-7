@@ -1,0 +1,28 @@
+--- yafti_gtk.py	2026-11-14 15:18:58.368307199 -0500
++++ yafti_gtk.py	2026-11-14 15:38:46.489979390 -0500
+@@ -22,19 +22,19 @@
+ 
+ # Constants
+ APP_ID = 'io.github.ublue_os.yafti_gtk'
+-APP_TITLE = 'Bazzite Portal'
++APP_TITLE = 'Seven Portal'
+ DEFAULT_WINDOW_WIDTH = 815
+ DEFAULT_WINDOW_HEIGHT = 600
+ STATUS_TIMEOUT_SECONDS = 3
+ ACTION_DIALOG_WIDTH = 420
+ AUTOSTART_DIR = os.path.expanduser('~/.config/autostart')
+-AUTOSTART_FILE = os.path.join(AUTOSTART_DIR, 'bazzite-portal.desktop')
++AUTOSTART_FILE = os.path.join(AUTOSTART_DIR, 'seven-portal.desktop')
+ AUTOSTART_CONTENT = """\
+ [Desktop Entry]
+-Name=Bazzite Portal
+-Comment=Helps you setup Bazzite
+-Exec=yafti_gtk.py /usr/share/yafti/yafti.yml
+-Icon=io.github.ublue_os.yafti_gtk
++Name=Seven Portal
++Comment=Helps you setup Kinoite 7
++Exec=seven-portal
++Icon=distributor-logo
+ Terminal=false
+ Type=Application
+ X-GNOME-Autostart-enabled=true
