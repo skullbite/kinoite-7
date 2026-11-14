@@ -10,7 +10,7 @@ cd libaero-qt
 build-and-install
 cd /tmp
 
-git clone --depth 1 https://gitgud.io/atmk/kitemview.git
+git clone --depth 1 https://gitgud.io/atmk/kitemviews.git
 cd kitemview
 build-and-install
 cd /tmp
