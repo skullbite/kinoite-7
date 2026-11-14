@@ -11,7 +11,7 @@ build-and-install
 cd /tmp
 
 git clone --depth 1 https://gitgud.io/atmk/kitemviews.git
-cd kitemview
+cd kitemviews
 build-and-install
 cd /tmp
 
