@@ -28,7 +28,6 @@ make
 make install
 cd /tmp
 
-
 git clone --depth 1 https://github.com/actuallyaridan/linux-taskmgr.git
 cd linux-taskmgr
 build-and-install
@@ -37,4 +36,10 @@ cd /tmp
 
 git clone --depth 1 https://gitgud.io/aeroshell/aeroshell-gadgets.git
 cd aeroshell-gadgets
+build-and-install
+
+cd /tmp
+
+git clone https://gitgud.io/atmk/app-store.git
+cd app-store
 build-and-install
