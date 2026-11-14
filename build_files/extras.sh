@@ -41,5 +41,6 @@ build-and-install
 cd /tmp
 
 git clone https://gitgud.io/atmk/app-store.git
+git checkout flatpak
 cd app-store
 build-and-install
