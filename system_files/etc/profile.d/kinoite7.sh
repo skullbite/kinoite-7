@@ -1,14 +1,18 @@
 #!/bin/bash
+
+
+
 case $(/usr/libexec/kin7-config-get bash-profile cmdprompt) in
     cmdprompt)
-        echo -e "Fedora Kinoite [Version $(uname -r)]\nCopyright (c) $(date +%Y) Fedora Community. All rights reserved.\n"
-        ;;
+        . /etc/os-release
+        echo -e "$NAME [Version $(uname -r)]\nCopyright (c) $(date +%Y) Fedora Community. All rights reserved.\n"
+      ;;
     # ublue)
         # /usr/libexec/ublue-motd
     #    ;;
     fastfetch)
         fastfetch --logo windows
-        ;;
+      ;;
 esac
 
 

@@ -9,8 +9,10 @@ else
     systemctl disable plasmalogin.service
     systemctl enable sddm.service
 fi
+
 echo "kinoite7" >> /etc/hostname
 
+# bazzite-deck will totally break with this changed
 if [[ $GAMER == "0" ]]; then
     cat > /usr/share/ublue-os/image-info.json <<EOF
 {
@@ -26,6 +28,13 @@ if [[ $GAMER == "0" ]]; then
 }
 EOF
 fi
+
+TAG="Desktop"
+if [[ $GAMER == "1" ]]; then
+    TAG="Gamer"
+fi
+sed -i "s/Variant=.*/Variant=${TAG} Edition/g" /etc/xdg/aerothemeplasma/kcm-about-distrorc
+
 
 install -d /usr/share/bash-completion/completions /usr/share/zsh/site-functions /usr/share/fish/vendor_completions.d/
 7just --completions bash | sed -E 's/([\(_" ])just/\17just/g' > /usr/share/bash-completion/completions/7just
