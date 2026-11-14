@@ -1,0 +1,11 @@
+title: Seven Portal
+screens:
+  - title: "Main"
+    description: "Stuff about the k7"
+    hidden: true
+    actions:
+      - id: "test"    
+        title: "Test"
+        description: "This is a test"  
+        default: false
+        script: "xdg-open https://github.com/skullbite/kinoite-7"
