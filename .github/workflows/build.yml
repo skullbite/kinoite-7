@@ -22,6 +22,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  
   prepare_env:
     name: Prepare Environment
     runs-on: ubuntu-24.04
@@ -29,6 +30,7 @@ jobs:
       image_registry: ${{ steps.env.outputs.IMAGE_REGISTRY }}  
       base_image_name: ${{ steps.env.outputs.BASE_IMAGE_NAME }}
       default_tag: ${{ steps.env.outputs.DEFAULT_TAG }}
+      target_branch: ${{ steps.env.outputs.TARGET_BRANCH }}
       
     steps:
       - name: Checkout
@@ -51,6 +53,7 @@ jobs:
           echo "IMAGE_REGISTRY=${IMAGE_REGISTRY,,}" >> ${GITHUB_OUTPUT}
           echo "BASE_IMAGE_NAME=${IMAGE_NAME,,}" >> ${GITHUB_OUTPUT}
           echo "DEFAULT_TAG=${DEFAULT_TAG}" >> ${GITHUB_OUTPUT}
+          echo "TARGET_BRANCH=${TARGET_BRANCH}" >> ${GITHUB_OUTPUT}
           
   build_push_main:
     name: Build and push (kinoite-7)  
@@ -60,7 +63,7 @@ jobs:
     with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}
       default-tag: ${{ needs.prepare_env.outputs.default_tag }} 
-      target-branch: ${{ env.TARGET_BRANCH }}
+      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
 
   build_push_gamer:
     name: Build and push (kinoite-7-gamer)  
@@ -70,8 +73,8 @@ jobs:
     with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-gamer
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
-      target-branch: ${{ env.TARGET_BRANCH }}
-
+      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
+      
   build_push_nvidia:
      name: Build and push (kinoite-7-nvidia)  
      needs: prepare_env  
@@ -80,7 +83,7 @@ jobs:
      with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-nvidia
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
-      target-branch: ${{ env.TARGET_BRANCH }}
+      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
 
   build_push_gamer_nvidia:
      name: Build and push (kinoite-7-gamer-nvidia)  
@@ -90,4 +93,4 @@ jobs:
      with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-gamer-nvidia
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
-      target-branch: ${{ env.TARGET_BRANCH }}
+      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
