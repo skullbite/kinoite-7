@@ -24,7 +24,11 @@ jobs:
   prepare_env:
     name: Prepare Environment
     runs-on: ubuntu-24.04
-    
+    outputs:
+      image_registry: ${{ steps.env.outputs.IMAGE_REGISTRY }}  
+      base_image_name: ${{ steps.env.outputs.BASE_IMAGE_NAME }}
+      default_tag: ${{ steps.env.outputs.DEFAULT_TAG }}
+      
     steps:
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
@@ -38,28 +42,32 @@ jobs:
           just check
             
       - name: Prepare environment
+        id: env  
         run: |
           IMAGE_NAME=$(just image_name)
           DEFAULT_TAG=$(just generate-default-tag)
           
-          echo "IMAGE_REGISTRY=${IMAGE_REGISTRY,,}" >> ${GITHUB_ENV}
-          echo "BASE_IMAGE_NAME=${IMAGE_NAME,,}" >> ${GITHUB_ENV}
-          echo "DEFAULT_TAG=${DEFAULT_TAG}" >> ${GITHUB_ENV}
+          echo "IMAGE_REGISTRY=${IMAGE_REGISTRY,,}" >> ${GITHUB_OUTPUT}
+          echo "BASE_IMAGE_NAME=${IMAGE_NAME,,}" >> ${GITHUB_OUTPUT}
+          echo "DEFAULT_TAG=${DEFAULT_TAG}" >> ${GITHUB_OUTPUT}
           
         
   build_push_main:
     name: Build and push (kinoite-7)
     runs-on: ubuntu-24.04
+    needs: prepare_env
 
     permissions:
       contents: read
       packages: write
       id-token: write
 
+    env:
+      IMAGE_REGISTRY: ${{ needs.prepare_env.outputs.image_registry }}  
+      IMAGE_NAME: ${{ needs.prepare_env.outputs.base_image_name }}
+      DEFAULT_TAG: ${{ needs.prepare_env.outputs.default_tag }}
+
     steps:
-      - name: Set Image Name
-        run: echo "IMAGE_NAME=${BASE_IMAGE_NAME,,}" >> ${GITHUB_ENV}
-      
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
@@ -146,16 +154,19 @@ jobs:
   build_push_gamer:
     name: Build and push (kinoite-7-gamer)
     runs-on: ubuntu-24.04
+    needs: prepare_env
 
     permissions:
       contents: read
       packages: write
       id-token: write
 
+    env:
+      IMAGE_REGISTRY: ${{ needs.prepare_env.outputs.image_registry }}  
+      IMAGE_NAME: ${{ needs.prepare_env.outputs.base_image_name }}-gamer
+      DEFAULT_TAG: ${{ needs.prepare_env.outputs.default_tag }}
+
     steps:
-      - name: Set Image Name
-        run: echo "IMAGE_NAME=${BASE_IMAGE_NAME,,}-gamer" >> ${GITHUB_ENV}  
-        
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
@@ -246,16 +257,19 @@ jobs:
   build_push_nvidia:
     name: Build and push (kinoite-7-nvidia)
     runs-on: ubuntu-24.04
+    needs: prepare_env
 
     permissions:
       contents: read
       packages: write
       id-token: write
 
+    env:
+      IMAGE_REGISTRY: ${{ needs.prepare_env.outputs.image_registry }}  
+      IMAGE_NAME: ${{ needs.prepare_env.outputs.base_image_name }}-nvidia
+      DEFAULT_TAG: ${{ needs.prepare_env.outputs.default_tag }}
+
     steps:
-      - name: Set Image Name
-        run: echo "IMAGE_NAME=${BASE_IMAGE_NAME,,}-nvidia" >> ${GITHUB_ENV}
-        
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
@@ -341,16 +355,19 @@ jobs:
   build_push_nvidia_gamer:
     name: Build and push (kinoite-7-gamer-nvidia)
     runs-on: ubuntu-24.04
+    needs: prepare_env
 
     permissions:
       contents: read
       packages: write
       id-token: write
 
+    env:
+      IMAGE_REGISTRY: ${{ needs.prepare_env.outputs.image_registry }}  
+      IMAGE_NAME: ${{ needs.prepare_env.outputs.base_image_name }}-nvidia
+      DEFAULT_TAG: ${{ needs.prepare_env.outputs.default_tag }}
+
     steps:
-      - name: Set Image Name
-        run: echo "IMAGE_NAME=${BASE_IMAGE_NAME,,}-gamer-nvidia" >> ${GITHUB_ENV}
-        
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
 
