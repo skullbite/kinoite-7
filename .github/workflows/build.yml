@@ -14,6 +14,7 @@ on:
   workflow_dispatch:
 
 env:
+  TARGET_BRANCH: "dev"  
   IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"  # do not edit
 
 concurrency:
@@ -21,7 +22,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  
   prepare_env:
     name: Prepare Environment
     runs-on: ubuntu-24.04
@@ -60,6 +60,7 @@ jobs:
     with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}
       default-tag: ${{ needs.prepare_env.outputs.default_tag }} 
+      target-branch: ${{ env.TARGET_BRANCH }}
 
   build_push_gamer:
     name: Build and push (kinoite-7-gamer)  
@@ -69,6 +70,7 @@ jobs:
     with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-gamer
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
+      target-branch: ${{ env.TARGET_BRANCH }}
 
   build_push_nvidia:
      name: Build and push (kinoite-7-nvidia)  
@@ -78,6 +80,7 @@ jobs:
      with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-nvidia
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
+      target-branch: ${{ env.TARGET_BRANCH }}
 
   build_push_gamer_nvidia:
      name: Build and push (kinoite-7-gamer-nvidia)  
@@ -87,3 +90,4 @@ jobs:
      with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-gamer-nvidia
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
+      target-branch: ${{ env.TARGET_BRANCH }}
