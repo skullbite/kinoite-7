@@ -10,10 +10,10 @@ cd libaero-qt
 build-and-install
 cd /tmp
 
-git clone --depth 1 https://gitgud.io/atmk/kitemviews.git
-cd kitemviews
-build-and-install
-cd /tmp
+# git clone --depth 1 https://gitgud.io/atmk/kitemviews.git
+# cd kitemviews
+# build-and-install
+# cd /tmp
 
 git clone --depth 1 https://gitgud.io/atmk/gwenview-aero.git
 cd gwenview-aero
@@ -45,10 +45,10 @@ build-and-install
 
 cd /tmp
 
-git clone https://gitgud.io/atmk/app-store.git
-cd app-store
-git checkout flatpak
-build-and-install
+# git clone https://gitgud.io/atmk/app-store.git
+# cd app-store
+# git checkout flatpak
+# build-and-install
 
 cd /tmp
 
