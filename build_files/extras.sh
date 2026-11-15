@@ -59,4 +59,6 @@ git apply /ctx/patches/seven-portal-app.patch
 git apply /ctx/patches/seven-portal-desktop.patch
 
 cp io.github.ublue_os.yafti_gtk.desktop /usr/share/applications/seven-portal.desktop
+
+mkdir -p /usr/share/kin7
 cp yafti_gtk.py /usr/share/kin7
