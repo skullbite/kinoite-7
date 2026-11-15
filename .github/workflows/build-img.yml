@@ -39,6 +39,7 @@ jobs:
 
       - name: Tweak containerfile
         run: |
+          set -euox pipefail  
           if [[ ${IMAGE_NAME} == "kinoite-7-gamer" ]]; then
             sed -i "s/kinoite-main:beta/bazzite-deck:stable/g" Containerfile
             sed -i "s/GAMER=0/GAMER=1/g" Containerfile
