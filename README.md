@@ -27,8 +27,9 @@ sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
 - [WinBlues 7](https://github.com/winblues/winblues7): The original inspiration for this image
 
 ## "How is this different from WinBlues 7?"
-> TL;DR: This image is based on Kinoite rather than Bazzite, and attempts to incorporate more ATP associated projects.
+[WinBlues 7](https://github.com/winblues/winblues7) is another image built by [ledif](https://github.com/ledif) that installs ATP for KDE.
 
-[WinBlues 7](https://github.com/winblues/winblues7) is another image built by [ledif](https://github.com/ledif) that installs ATP on top of Bazzite KDE Plasma. ~~At the time of writing, the included taskbar component (SevenTasks) is broken.~~
+- Kinoite 7 ships both a Desktop and Deck (Gamer) image, whereas WinBlues 7 only ships a Deck Release. 
+- WinBlues 7 only ships ATP on top of Bazzite Deck, no additional software related to the ATP experience.
 
-This image is built on top of [UBlue's kinoite image](https://github.com/ublue-os/main), which only includes the (GUI) apps that come by default in KDE Plasma under Fedora Atomic. (Besides steam)
+I heavily recommend checking out the [WinBlues](https://github.com/winblues) project for more bootc oses meant to simulate older versions of windows for modern linux.
