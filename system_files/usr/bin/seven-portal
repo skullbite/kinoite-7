@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/usr/share/kin7/yafti_gtk.py /usr/share/yafti/kin7_yafti.yml
