@@ -12,7 +12,7 @@ def edit_key(key: str, val: str | int):
 
 with open("/etc/os-release", "r") as file:
     lines = file.readlines()
-    edit_key("NAME", "Kinoite 7" + ": Gamer Edition" if os.getenv("GAMER") == "1" else "")
+    edit_key("NAME", "Kinoite 7" + (": Gamer Edition" if os.getenv("GAMER") == "1" else ""))
     edit_key("PRETTY_NAME", get_key("NAME") + " " + get_key("VERSION"))
     edit_key("DEFAULT_HOSTNAME", "kinoite7")
     edit_key("HOME_URL", "https://github.com/skullbite/kinoite-7")
