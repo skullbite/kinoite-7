@@ -1,0 +1,31 @@
+--- io.github.ublue_os.yafti_gtk.desktop	2026-11-14 15:28:08.138433651 -0500
++++ io.github.ublue_os.yafti_gtk.desktop	2026-11-14 15:34:41.346919507 -0500
+@@ -1,23 +1,9 @@
+ [Desktop Entry]
+-Name=Bazzite Portal
+-Name[cs]=Portál Bazzite
+-Name[de]=Bazzite Portal
+-Name[el]=Πύλη Bazzite
+-Name[es]=Portal Bazzite
+-Name[fr]=Portail Bazzite
+-Name[it]=Portale Bazzite
+-Name[ru]=Bazzite Портал
+-Comment=Helps you setup Bazzite
+-Comment[cs]=Pomůže vám nastavit Bazzite
+-Comment[de]=Hilft bei der Einrichtung von Bazzite
+-Comment[el]=Σας βοηθά να ρυθμίσετε το Bazzite
+-Comment[es]=Te ayuda a configurar Bazzite
+-Comment[fr]=Vous aide à configurer Bazzite
+-Comment[it]=Ti aiuta a configurare Bazzite
+-Comment[ru]=Помогает вам настроить Bazzite
+-Exec=yafti_gtk.py /usr/share/yafti/yafti.yml
+-Icon=io.github.ublue_os.yafti_gtk
++Name=Seven Portal
++Comment=Helps you setup Kinoite 7
++Exec=seven-portal
++Icon=distributor-logo
+ Terminal=false
+ Type=Application
+ Categories=System;Settings;
+-Keywords=bazzite;setup;configuration;
++Keywords=kinoite;setup;configuration;

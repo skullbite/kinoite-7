@@ -19,3 +19,4 @@ cd /ctx
 ./plymouthvista.sh
 ./os-release.py
 ./finalize.sh
+

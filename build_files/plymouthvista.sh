@@ -17,9 +17,16 @@ sed -i "s/Microsoft Corporation/Fedora Community/g" src/plymouth_config.sp
 chmod +x {compile,install,omitPlymouth}.sh
 ./compile.sh 
 ./install.sh -s
-./omitPlymouth.sh
 
-KERNEL_VERSION=$(ls /lib/modules | grep "14")
+# ./omitPlymouth.sh
+DRACUT_CONF_LOCATION='/etc/dracut.conf.d/omit_plymouth.conf'
+DRACUT_CONF='\nomit_dracutmodules+=" plymouth "'
+
+printf "$DRACUT_CONF" > "$DRACUT_CONF_LOCATION"
+
+/usr/bin/dracut --force --regenerate-all --verbose
+
+KERNEL_VERSION=$(ls /lib/modules | grep fc)
 
 /usr/bin/dracut --no-hostonly --kver "${KERNEL_VERSION}" --reproducible -v --add ostree -f "/lib/modules/${KERNEL_VERSION}/initramfs.img"
 chmod 0600 "/lib/modules/${KERNEL_VERSION}/initramfs.img"
