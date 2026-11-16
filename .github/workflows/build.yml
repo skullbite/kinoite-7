@@ -60,7 +60,6 @@ jobs:
     with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}
       default-tag: ${{ needs.prepare_env.outputs.default_tag }} 
-      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
 
   build_push_gamer:
     name: Build and push (kinoite-7-gamer)  
@@ -70,7 +69,6 @@ jobs:
     with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-gamer
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
-      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
       
   build_push_nvidia:
      name: Build and push (kinoite-7-nvidia)  
@@ -80,7 +78,6 @@ jobs:
      with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-nvidia
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
-      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
 
   build_push_gamer_nvidia:
      name: Build and push (kinoite-7-gamer-nvidia)  
@@ -90,4 +87,3 @@ jobs:
      with:
       image-name: ${{ needs.prepare_env.outputs.base_image_name }}-gamer-nvidia
       default-tag: ${{ needs.prepare_env.outputs.default_tag }}
-      target-branch: ${{ needs.prepare_env.outputs.target_branch }}
