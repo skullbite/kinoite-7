@@ -52,13 +52,11 @@ cd /tmp
 
 cd /tmp
 
-git clone https://github.com/ublue-os/yafti-gtk.git
-cd yafti-gtk
-git checkout f26443c8669edae05b35e20ad16fc74568637874
-git apply /ctx/patches/seven-portal-app.patch
-git apply /ctx/patches/seven-portal-desktop.patch
-
-cp io.github.ublue_os.yafti_gtk.desktop /usr/share/applications/seven-portal.desktop
-
-mkdir -p /usr/share/kin7
-cp yafti_gtk.py /usr/share/kin7
+# git clone https://github.com/ublue-os/yafti-gtk.git
+# cd yafti-gtk
+# git checkout f26443c8669edae05b35e20ad16fc74568637874
+# git apply /ctx/patches/seven-portal-app.patch
+# git apply /ctx/patches/seven-portal-desktop.patch
+# cp io.github.ublue_os.yafti_gtk.desktop /usr/share/applications/seven-portal.desktop
+# mkdir -p /usr/share/kin7
+# cp yafti_gtk.py /usr/share/kin7
