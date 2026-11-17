@@ -17,36 +17,50 @@
 > Please [reinstall](#neither-of-these) instead.
 
 #### Coming from Fedora Kinoite or a derivative (Bazzite-KDE, Aurora, etc):
+
+##### Desktop
 ```sh
-# Desktop
 rpm-ostree rebase ostree-image-signed:docker://ghcr.io/skullbite/kinoite-7:latest 
+```
 
-# Desktop + NVIDIA drivers
+##### Desktop + NVIDIA drivers
+```sh
 rpm-ostree rebase ostree-image-signed:docker://ghcr.io/skullbite/kinoite-7-nvidia:latest 
+```
 
-# Bazzite Deck + Kinoite 7
+##### Bazzite Deck + Kinoite 7
+```sh
 rpm-ostree rebase ostree-image-signed:docker://ghcr.io/skullbite/kinoite-7-gamer:latest 
+```
 
-# Bazzite Deck + Kinoite 7 + NVIDIA drivers
+##### Bazzite Deck + Kinoite 7 + NVIDIA drivers
+```sh
 rpm-ostree rebase ostree-image-signed:docker://ghcr.io/skullbite/kinoite-7-gamer-nvidia:latest 
 ```
-
+----
 #### Coming from another bootc OS:
+> [!NOTE]
+> It is recommended to rebase to a signed image after this (shown above)
+
+##### Desktop
 ```sh
-# It's recommended to `rpm-ostree rebase` to a signed image after you `bootc switch` (shown above)
-
-# Desktop
 sudo bootc switch ghcr.io/skullbite/kinoite-7:latest
+```
 
-# Desktop + NVIDIA drivers
+##### Desktop + NVIDIA drivers
+```sh
 sudo bootc switch ghcr.io/skullbite/kinoite-7-nvidia:latest
-
-# Bazzite Deck + Kinoite 7
+```
+##### Bazzite Deck + Kinoite 7
+```sh
 sudo bootc switch ghcr.io/skullbite/kinoite-7-gamer:latest 
+```
 
-# Bazzite Deck + Kinoite 7 + NVIDIA drivers
+##### Bazzite Deck + Kinoite 7 + NVIDIA drivers
+```sh
 sudo bootc switch ghcr.io/skullbite/kinoite-7-gamer-nvidia:latest
 ```
+---
 
 ### Neither of these?
 Currently there is no ISO to install Kinoite 7 with. Install [Fedora Kinoite](https://fedoraproject.org/atomic-desktops/kinoite/download/), and [rebase](#coming-from-fedora-kinoite-or-a-derivative-bazzite-kde-aurora-etc) to Kinoite 7 afterwards.
