@@ -6,7 +6,7 @@ set -ouex pipefail
 
 if [[ $GAMER == "0" ]]; then
     dnf remove -y nvtop
-    dnf install -y fastfetch steam tailscale gum glow
+    dnf install -y fastfetch steam tailscale gum glow nerd-fonts
     
     dnf copr enable -y secureblue/packages
     dnf install -y homebrew
