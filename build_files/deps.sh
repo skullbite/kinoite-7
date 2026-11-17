@@ -22,6 +22,12 @@ dnf install -y layer-shell-qt-devel wayland-protocols-devel sddm ninja cmake ext
 # apps
 dnf install -y kf6-kio kf6-kparts-devel kf6-baloo-devel kf6-kcoreaddons-devel libjpeg-turbo-devel exiv2-devel lcms2-devel kimageannotator-qt6-devel libkdcraw-devel kcolorpicker-qt6-devel patchelf flatpak-devel dolphin-devel
 
+# app store specifically
+cd /tmp
+git clone https://gitlab.com/mnauw/cppgir.git
+cd cppgir
+build-and-install
+
 # gadgets
 dnf install -y qt6-qtbase kf6-kunitconversion-devel kf6-kholidays-devel extra-cmake-modules qt6-qtdeclarative-devel kf6-ktextwidgets-devel
 
