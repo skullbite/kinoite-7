@@ -5,7 +5,7 @@ on:
     branches:
       - dev
   schedule:
-    - cron: '05 10 * * *'  # 10:05am UTC everyday
+    - cron: '0 10 * * 3'  # 10:00am UTC on wednesdays, this branch is manually triggered anyway.
   push:
     branches:
       - dev
