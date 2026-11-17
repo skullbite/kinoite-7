@@ -71,7 +71,7 @@ Currently there is no ISO to install Kinoite 7 with. Install [Fedora Kinoite](ht
 - catpswin56: [AeroShell Gadgets](https://gitgud.io/aeroshell/aeroshell-gadgets), [Linver](https://gitgud.io/wackyideas/linver)
 - ActuallyAridan: [Task Manager Recreation](https://github.com/actuallyaridan/linux-taskmgr)
 - Albert Tomanek: Aero [Dolphin](https://gitgud.io/atmk/dolphin-aero)/[GwenView](https://gitgud.io/atmk/dolphin-gwenview)
-- Shiny Lisan: Assisting in helping me set a default wallpaper for the os.
+- Shiny Lisan: Assisted in setting a default wallpaper for the OS
 - Frutiger Aero Archive: [W7 Wallpapers](https://frutigeraeroarchive.org/wallpapers/windows_7)
 - CachyOS: Two extra [wallpapers](https://github.com/CachyOS/cachyos-wallpapers) (wave, wave2-dark)
 - WinBlues 7: Doing this idea first
