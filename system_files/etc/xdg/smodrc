@@ -19,3 +19,14 @@ HideIcon=false
 HideInnerBorder=true
 HideTitleBar=false
 Mask=0
+
+[Windeco Exception 2]
+BorderSize=0
+Enabled=true
+ExceptionPattern=explorer
+ExceptionType=0
+HideCaption=false
+HideIcon=false
+HideInnerBorder=true
+HideTitleBar=false
+Mask=0
