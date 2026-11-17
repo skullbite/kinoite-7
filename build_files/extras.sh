@@ -49,10 +49,10 @@ git clone --dept 1 https://github.com/actuallyaridan/linux-explorer.git
 cd linux-explorer
 build-and-install
 
-# git clone https://gitgud.io/atmk/app-store.git
-# cd app-store
-# git checkout flatpak
-# build-and-install
+git clone https://gitgud.io/atmk/app-store.git
+cd app-store
+git checkout flatpak
+build-and-install
 
 cd /tmp
 
