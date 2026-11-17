@@ -28,8 +28,11 @@ cd /tmp
 git clone --depth 1 https://github.com/mrbvrz/segoe-ui-linux.git /tmp/segoe
 curl -o /usr/share/fonts/lucon.ttf -SsL https://github.com/FSKiller/Microsoft-Fonts/blob/main/lucon.ttf
 curl -o /tmp/tv.zip https://www.yohng.com/files/TerminalVector.zip
+curl -Lo /tmp/hack.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Hack.zip
 unzip tv.zip
+unzip hack.zip
 
+cp HackNerdFont*.ttf /usr/share/fonts
 cp TerminalVector.ttf /usr/share/fonts
 cp -r /tmp/segoe/font /usr/share/fonts
 
