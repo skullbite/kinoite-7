@@ -67,7 +67,7 @@ Currently there is no ISO to install Kinoite 7 with. Install [Fedora Kinoite](ht
 
 ## Credits
 - Universal Blue: [Bootc Image Template](https://github.com/ublue-os/image-template), [Bazzite-Deck](https://github.com/ublue-os/bazzite) image, and [Kinoite](https://github.com/ublue-os/main) image
-- AeroShell Community: [AeroThemePlasma](https://gitgud.io/aeroshell/atp/aerothemeplasma)
+- WhackyIdeas + AeroShell Community: [AeroThemePlasma](https://gitgud.io/aeroshell/atp/aerothemeplasma)
 - catpswin56: [AeroShell Gadgets](https://gitgud.io/aeroshell/aeroshell-gadgets), [Linver](https://gitgud.io/wackyideas/linver)
 - ActuallyAridan: [Task Manager Recreation](https://github.com/actuallyaridan/linux-taskmgr)
 - Albert Tomanek: Aero [Dolphin](https://gitgud.io/atmk/dolphin-aero)/[GwenView](https://gitgud.io/atmk/dolphin-gwenview)
