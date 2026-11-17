@@ -23,7 +23,7 @@ dnf install -y layer-shell-qt-devel wayland-protocols-devel sddm ninja cmake ext
 dnf install -y kf6-kio kf6-kparts-devel kf6-baloo-devel kf6-kcoreaddons-devel libjpeg-turbo-devel exiv2-devel lcms2-devel kimageannotator-qt6-devel libkdcraw-devel kcolorpicker-qt6-devel patchelf flatpak-devel dolphin-devel
 
 # app store specifically
-dnf install -y boost-devel
+dnf install -y boost-devel fmt-devel
 cd /tmp
 git clone https://gitlab.com/mnauw/cppgir.git
 cd cppgir
