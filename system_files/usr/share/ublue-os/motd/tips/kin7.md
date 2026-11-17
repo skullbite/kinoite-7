@@ -1,1 +1,0 @@
-Super cool tip!

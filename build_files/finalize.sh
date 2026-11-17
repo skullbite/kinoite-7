@@ -10,6 +10,9 @@ else
     systemctl enable sddm.service
 fi
 
+rm /etc/profile.d/user-motd
+rm /usr/libexec/ublue-motd
+
 echo "kinoite7" >> /etc/hostname
 
 # bazzite-deck will totally break with this changed

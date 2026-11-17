@@ -1,8 +1,14 @@
-get-config := "/usr/libexec/kin7-config-get"
-set-config := "/usr/libexec/kin7-config-set"
+import "just/config.just"
 
 _default:
     @7just --list
+
+motd:
+   @echo "  {{ BG_BLUE + BOLD }} Welcome to Kinoite 7 󰨡 {{ NORMAL }}"
+   @echo 
+   @echo "  I: tmp"
+   @echo "  S: tmp"
+   @echo
 
 set-bash-profile $option="choose":
     #!/bin/bash
@@ -94,15 +100,12 @@ _kin7-init:
 
     7just _write-kvantum-config
     mkdir -p ~/.config
-    # doesn't work here
-    touch ~/.config/no-show-user-motd
     touch $init_file
 
 _write-kvantum-config:
     #!/bin/bash
     set -e pipefail
 
-    # WHY WONT THIS WORK IN /usr/share
     kv_path=~/.config/Kvantum/kvantum.kvconfig
     mkdir -p ~/.config/Kvantum
     if [[ ! -f $kv_path ]]; then
