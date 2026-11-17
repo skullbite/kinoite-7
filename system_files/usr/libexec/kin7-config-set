@@ -1,4 +1,3 @@
 #!/bin/bash
-mkdir -p ~/.config/kin7
-echo "$2" > ~/.config/kin7/$1
 
+kwriteconfig6 --file kin7rc --group General --key "$1" --type string "$2"

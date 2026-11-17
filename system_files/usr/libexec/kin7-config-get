@@ -1,8 +1,9 @@
 #!/bin/bash
-mkdir -p ~/.config/kin7
-if [[ ! -f ~/.config/kin7/$1 ]]; then
-    echo "$2"
-    exit
-fi
 
-cat ~/.config/kin7/$1
+VALUE="$(kreadconfig6 --file kin7rc --group General --key $1)"
+
+if [[ "$VALUE" == "" ]]; then
+    echo "$2"
+else
+    echo "$VALUE"
+fi
