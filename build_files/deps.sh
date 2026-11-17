@@ -27,6 +27,7 @@ dnf install -y boost-devel fmt-devel
 cd /tmp
 git clone https://gitlab.com/mnauw/cppgir.git
 cd cppgir
+git submodule update --init
 build-and-install
 
 # gadgets
