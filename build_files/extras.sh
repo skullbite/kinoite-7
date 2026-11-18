@@ -50,12 +50,12 @@ cd linux-explorer
 build-and-install
 cd /tmp
 
-git clone https://gitgud.io/atmk/app-store.git
-cd app-store
-git checkout flatpak
-build-and-install
-
-cd /tmp
+# git clone https://gitgud.io/atmk/app-store.git
+# cd app-store
+# git checkout flatpak
+# sed -i '/target_link_libraries(app-store/i target_include_directories(app-store PRIVATE "/usr/include")' CMakeLists.txt
+# build-and-install
+# cd /tmp
 
 # git clone https://github.com/ublue-os/yafti-gtk.git
 # cd yafti-gtk
